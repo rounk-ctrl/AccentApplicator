@@ -1,7 +1,7 @@
 # AccentApplicator [![AccentApplicator](https://github.com/rounk-ctrl/AccentApplicator/actions/workflows/msbuild.yml/badge.svg?branch=main)](https://github.com/rounk-ctrl/AccentApplicator/actions/workflows/msbuild.yml)
 A tool to apply accent color to win32 controls. <br />
 Works with Windows 10 only. <br />
-For Windows 11 i intended to make it only for Rectify11 but maybe i will make one for vanilla 11.
+For Windows 11 I intended to make it only for Rectify11 but maybe I will make one for vanilla 11.
 
 # Overall Progress
 ## Controls
