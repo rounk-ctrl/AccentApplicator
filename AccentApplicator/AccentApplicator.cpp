@@ -32,6 +32,8 @@ inline int PixA(BYTE* pPixel)
 
 #pragma endregion
 
+#pragma region HSV
+
 typedef struct {
     double r;       // a fraction between 0 and 1
     double g;       // a fraction between 0 and 1
@@ -147,6 +149,8 @@ rgb hsv2rgb(hsv in)
     }
     return out;
 }
+
+#pragma endregion
 
 int RecolorizeBitmap(HBITMAP hbm)
 {
@@ -277,6 +281,12 @@ int RecolorizeBitmap(HBITMAP hbm)
                 pPixel[1] = GetGValue(accent);
                 pPixel[0] = GetBValue(accent);
             }
+            else if (r == 36 && g == 131 && b == 218)
+            {
+                pPixel[2] = GetRValue(accent);
+                pPixel[1] = GetGValue(accent);
+                pPixel[0] = GetBValue(accent);
+            }
             else if (r == 64 && g == 118 && b == 173)
             {
                 pPixel[2] = GetRValue(accentLight1);
@@ -313,6 +323,78 @@ int RecolorizeBitmap(HBITMAP hbm)
                 pPixel[1] = GetGValue(accentLight2);
                 pPixel[0] = GetBValue(accentLight2);
             }
+            else if (r == 84 && g == 151 && b == 223)
+            {
+                pPixel[2] = GetRValue(accentLight1);
+                pPixel[1] = GetGValue(accentLight1);
+                pPixel[0] = GetBValue(accentLight1);
+            }
+            else if (r == 176 && g == 203 && b == 238)
+            {
+                pPixel[2] = GetRValue(accentLight3);
+                pPixel[1] = GetGValue(accentLight3);
+                pPixel[0] = GetBValue(accentLight3);
+            }
+            else if (r == 27 && g == 96 && b == 160)
+            {
+                pPixel[2] = GetRValue(accent);
+                pPixel[1] = GetGValue(accent);
+                pPixel[0] = GetBValue(accent);
+            }
+            else if (r == 65 && g == 119 && b == 173)
+            {
+                pPixel[2] = GetRValue(accentLight1);
+                pPixel[1] = GetGValue(accentLight1);
+                pPixel[0] = GetBValue(accentLight1);
+            }
+            else if (r == 140 && g == 174 && b == 209)
+            {
+                pPixel[2] = GetRValue(accentLight2);
+                pPixel[1] = GetGValue(accentLight2);
+                pPixel[0] = GetBValue(accentLight2);
+            }
+            else if (r == 51 && g == 147 && b == 223)
+            {
+                pPixel[2] = GetRValue(accentLight1);
+                pPixel[1] = GetGValue(accentLight1);
+                pPixel[0] = GetBValue(accentLight1);
+            }
+            else if (r == 66 && g == 142 && b == 221)
+            {
+                pPixel[2] = GetRValue(accentLight1);
+                pPixel[1] = GetGValue(accentLight1);
+                pPixel[0] = GetBValue(accentLight1);
+            }
+            else if (r == 51 && g == 109 && b == 167)
+            {
+                pPixel[2] = GetRValue(accent);
+                pPixel[1] = GetGValue(accent);
+                pPixel[0] = GetBValue(accent);
+            }
+            else if (r == 184 && g == 208 && b == 240)
+            {
+                pPixel[2] = GetRValue(accentLight3);
+                pPixel[1] = GetGValue(accentLight3);
+                pPixel[0] = GetBValue(accentLight3);
+            }
+            else if (r == 186 && g == 213 && b == 236)
+            {
+                pPixel[2] = GetRValue(accentLight2);
+                pPixel[1] = GetGValue(accentLight2);
+                pPixel[0] = GetBValue(accentLight2);
+            }
+            else if (r == 146 && g == 179 && b == 213)
+            {
+                pPixel[2] = GetRValue(accentLight2);
+                pPixel[1] = GetGValue(accentLight2);
+                pPixel[0] = GetBValue(accentLight2);
+            }
+            else if (r == 176 && g == 205 && b == 230)
+            {
+                pPixel[2] = GetRValue(accentLight2);
+                pPixel[1] = GetGValue(accentLight2);
+                pPixel[0] = GetBValue(accentLight2);
+            }
             //pPixel[3] = 1;
             pPixel += 4;
         }
@@ -338,7 +420,7 @@ void ModifyStyles()
     int i,j;
     ModifyStyle(VSCLASS_BUTTON, BP_RADIOBUTTON, 0, 3);
     ModifyStyle(VSCLASS_BUTTON, BP_CHECKBOX, 0, 3);
-    ModifyStyle(VSCLASS_BUTTON, BP_PUSHBUTTON, 0, TMT_DIBDATA);
+	ModifyStyle(VSCLASS_BUTTON, BP_PUSHBUTTON, 0, TMT_DIBDATA);
     for (i = CP_DROPDOWNBUTTON; i <= CP_DROPDOWNBUTTONLEFT; i++)
     {
         ModifyStyle(VSCLASS_COMBOBOX, i, 0, TMT_DIBDATA);

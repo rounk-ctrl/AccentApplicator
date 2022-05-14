@@ -40,7 +40,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="asdf.rc">
+    <ResourceCompile Include="AccentApplicator.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -48,7 +48,7 @@
     <Image Include="small.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="asdf.ico">
+    <Image Include="AccentApplicator.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
