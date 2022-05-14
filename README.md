@@ -26,4 +26,4 @@ For Windows 11 I intended to make it only for Rectify11 but maybe I will make on
 ![image](https://user-images.githubusercontent.com/70931017/167675033-a28f3b80-d820-48bc-8912-b89d9e87f44d.png)
 
 <hr />
-_based on https://github.com/krlvm/AccentColorizer_
+based on https://github.com/krlvm/AccentColorizer
