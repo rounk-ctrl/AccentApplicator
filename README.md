@@ -3,6 +3,7 @@ A tool to apply accent color to win32 controls. <br />
 Works with Windows 10 only. <br />
 For Windows 11 I intended to make it only for Rectify11 but maybe I will make one for vanilla 11.
 
+
 # Overall Progress
 ## Controls
  - [x] Button
@@ -19,6 +20,9 @@ For Windows 11 I intended to make it only for Rectify11 but maybe I will make on
  - [ ] Trackbar
  - [ ] Radio button
  - [ ] Progress
+
+## Limitations
+- Doesn't automatically change accent color of controls when accent color changes, you have to reapply the **msstyle** then re-run the app.
 
 # Screenshots
 ![image](https://user-images.githubusercontent.com/70931017/167674831-6316dc46-8ce6-48a8-bac2-2dc3fe5e95b6.png)
