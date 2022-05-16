@@ -22,7 +22,7 @@ For Windows 11 I intended to make it only for Rectify11 but maybe I will make on
  - [ ] Progress
 
 ## Limitations
-- Doesn't automatically change accent color of controls when accent color changes, you have to reapply the **msstyle** then re-run the app.
+- If you close the app and change accent color and then relaunch the app it won't change colors.
 
 # Screenshots
 ![image](https://user-images.githubusercontent.com/70931017/167674831-6316dc46-8ce6-48a8-bac2-2dc3fe5e95b6.png)
