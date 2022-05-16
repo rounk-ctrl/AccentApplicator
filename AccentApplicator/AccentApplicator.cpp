@@ -49,126 +49,6 @@ inline int PixA(BYTE* pPixel)
 
 #pragma endregion
 
-#pragma region HSV
-
-typedef struct {
-    double r;       // a fraction between 0 and 1
-    double g;       // a fraction between 0 and 1
-    double b;       // a fraction between 0 and 1
-} rgb;
-typedef struct {
-    double h;       // angle in degrees
-    double s;       // a fraction between 0 and 1
-    double v;       // a fraction between 0 and 1
-} hsv;
-static hsv   rgb2hsv(rgb in);
-static rgb   hsv2rgb(hsv in);
-
-hsv rgb2hsv(rgb in)
-{
-    hsv         out;
-    double      min, max, delta;
-
-    min = in.r < in.g ? in.r : in.g;
-    min = min < in.b ? min : in.b;
-
-    max = in.r > in.g ? in.r : in.g;
-    max = max > in.b ? max : in.b;
-
-    out.v = max;                                // v
-    delta = max - min;
-    if (delta < 0.00001)
-    {
-        out.s = 0;
-        out.h = 0; // undefined, maybe nan?
-        return out;
-    }
-    if (max > 0.0) { // NOTE: if Max is == 0, this divide would cause a crash
-        out.s = (delta / max);                  // s
-    }
-    else {
-        // if max is 0, then r = g = b = 0              
-        // s = 0, h is undefined
-        out.s = 0.0;
-        out.h = NAN;                            // its now undefined
-        return out;
-    }
-    if (in.r >= max)                           // > is bogus, just keeps compilor happy
-        out.h = (in.g - in.b) / delta;        // between yellow & magenta
-    else
-        if (in.g >= max)
-            out.h = 2.0 + (in.b - in.r) / delta;  // between cyan & yellow
-        else
-            out.h = 4.0 + (in.r - in.g) / delta;  // between magenta & cyan
-
-    out.h *= 60.0;                              // degrees
-
-    if (out.h < 0.0)
-        out.h += 360.0;
-
-    return out;
-}
-
-rgb hsv2rgb(hsv in)
-{
-    double      hh, p, q, t, ff;
-    long        i;
-    rgb         out;
-
-    if (in.s <= 0.0) {       // < is bogus, just shuts up warnings
-        out.r = in.v;
-        out.g = in.v;
-        out.b = in.v;
-        return out;
-    }
-    hh = in.h;
-    if (hh >= 360.0) hh = 0.0;
-    hh /= 60.0;
-    i = (long)hh;
-    ff = hh - i;
-    p = in.v * (1.0 - in.s);
-    q = in.v * (1.0 - (in.s * ff));
-    t = in.v * (1.0 - (in.s * (1.0 - ff)));
-
-    switch (i) {
-    case 0:
-        out.r = in.v;
-        out.g = t;
-        out.b = p;
-        break;
-    case 1:
-        out.r = q;
-        out.g = in.v;
-        out.b = p;
-        break;
-    case 2:
-        out.r = p;
-        out.g = in.v;
-        out.b = t;
-        break;
-
-    case 3:
-        out.r = p;
-        out.g = q;
-        out.b = in.v;
-        break;
-    case 4:
-        out.r = t;
-        out.g = p;
-        out.b = in.v;
-        break;
-    case 5:
-    default:
-        out.r = in.v;
-        out.g = p;
-        out.b = q;
-        break;
-    }
-    return out;
-}
-
-#pragma endregion
-
 int RecolorizeBitmap(HBITMAP hbm)
 {
     BITMAP bm;
@@ -231,16 +111,9 @@ int RecolorizeBitmap(HBITMAP hbm)
             else if ((r == 0 && g == 27 && b == 50) || (r == 0 && g == 14 && b == 26))
             {
                 // Explorer Item / Inactive Explorer Item Hover (VERY LIGHT BLUE)
-                rgb rg;
-                rg.r = GetRValue(accentLight3);
-                rg.g = GetGValue(accentLight3);
-                rg.b = GetBValue(accentLight3);
-                hsv oee = rgb2hsv(rg);
-                oee.s = 0.175;
-                rgb newval = hsv2rgb(oee);
-                pPixel[2] = newval.r;
-                pPixel[1] = newval.g;
-                pPixel[0] = newval.b;
+				pPixel[2] = GetRValue(accentLight3);
+				pPixel[1] = GetGValue(accentLight3);
+				pPixel[0] = GetBValue(accentLight3);
             }
             else if (r == 217 && g == 235 && b == 249)
             {
@@ -412,6 +285,50 @@ int RecolorizeBitmap(HBITMAP hbm)
                 pPixel[1] = GetGValue(accentLight2);
                 pPixel[0] = GetBValue(accentLight2);
             }
+
+			// accent auto
+			if (r == GetRValue(oldAccent) && g == GetGValue(oldAccent) && b == GetBValue(oldAccent))
+			{
+				pPixel[2] = GetRValue(accent);
+				pPixel[1] = GetGValue(accent);
+				pPixel[0] = GetBValue(accent);
+			}
+			if (r == GetRValue(oldAccentLight1) && g == GetGValue(oldAccentLight1) && b == GetBValue(oldAccentLight1))
+			{
+				pPixel[2] = GetRValue(accentLight1);
+				pPixel[1] = GetGValue(accentLight1);
+				pPixel[0] = GetBValue(accentLight1);
+			}
+			if (r == GetRValue(oldAccentLight2) && g == GetGValue(oldAccentLight2) && b == GetBValue(oldAccentLight2))
+			{
+				pPixel[2] = GetRValue(accentLight2);
+				pPixel[1] = GetGValue(accentLight2);
+				pPixel[0] = GetBValue(accentLight2);
+			}
+			if (r == GetRValue(oldAccentLight3) && g == GetGValue(oldAccentLight3) && b == GetBValue(oldAccentLight3))
+			{
+				pPixel[2] = GetRValue(accentLight3);
+				pPixel[1] = GetGValue(accentLight3);
+				pPixel[0] = GetBValue(accentLight3);
+			}
+			if (r == GetRValue(oldAccentDark1) && g == GetGValue(oldAccentDark1) && b == GetBValue(oldAccentDark1))
+			{
+				pPixel[2] = GetRValue(accentDark1);
+				pPixel[1] = GetGValue(accentDark1);
+				pPixel[0] = GetBValue(accentDark1);
+			}
+			if (r == GetRValue(oldAccentDark2) && g == GetGValue(oldAccentDark2) && b == GetBValue(oldAccentDark2))
+			{
+				pPixel[2] = GetRValue(accentDark2);
+				pPixel[1] = GetGValue(accentDark2);
+				pPixel[0] = GetBValue(accentDark2);
+			}
+			if (r == GetRValue(oldAccentDark3) && g == GetGValue(oldAccentDark3) && b == GetBValue(oldAccentDark3))
+			{
+				pPixel[2] = GetRValue(accentDark3);
+				pPixel[1] = GetGValue(accentDark3);
+				pPixel[0] = GetBValue(accentDark3);
+			}
             //pPixel[3] = 1;
             pPixel += 4;
         }
@@ -430,7 +347,6 @@ int ModifyStyle(LPCWSTR pszClassList, int iPartId, int iStateId, int iPropId)
 
     return RecolorizeBitmap(hBitmap);
 }
-
 
 void ModifyStyles()
 {
@@ -505,8 +421,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_ LPWSTR    lpCmdLine,
     _In_ int       nCmdShow)
 {
-	InitAccentColors();
-
+	UpdateAccentColors();
+	SaveCurrentAccentColors();
 	ModifyStyles();
 
 	int aElements[size] =
@@ -649,11 +565,31 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		case WM_RBUTTONDOWN:
 			GetCursorPos(&ok);
 			ShowContextMenu(hWnd, ok);
-			break;
 		}
+	break;
 	case WM_WININICHANGE:
 	{
+		UpdateAccentColors();
+		ModifyStyles();
+		SaveCurrentAccentColors();
+		int aElements[size] =
+		{
+			COLOR_ACTIVECAPTION,
+			COLOR_GRADIENTACTIVECAPTION,
+			COLOR_HIGHLIGHT,
+			COLOR_HOTLIGHT,
+			COLOR_MENUHILIGHT
+		};
+		DWORD aOldColors[size];
+		DWORD aNewColors[size];
 
+		for (int i = 0; i < size; i++)
+		{
+			aOldColors[i] = GetSysColor(aElements[i]);
+			aNewColors[i] = RGB(GetRValue(accent), GetGValue(accent), GetBValue(accent));
+		}
+
+		SetSysColors(size, aElements, aNewColors);
 	}
 	break;
 	default:

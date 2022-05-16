@@ -9,4 +9,15 @@ extern COLORREF accentLight3;
 extern COLORREF accentDark1;
 extern COLORREF accentDark2;
 extern COLORREF accentDark3;
-void InitAccentColors();
+
+extern COLORREF oldAccent;
+extern COLORREF oldAccentLight1;
+extern COLORREF oldAccentLight2;
+extern COLORREF oldAccentLight3;
+
+extern COLORREF oldAccentDark1;
+extern COLORREF oldAccentDark2;
+extern COLORREF oldAccentDark3;
+
+void UpdateAccentColors();
+void SaveCurrentAccentColors();
