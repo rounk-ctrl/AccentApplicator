@@ -570,28 +570,35 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_WININICHANGE:
 	{
 		UpdateAccentColors();
-		ModifyStyles();
-		SaveCurrentAccentColors();
-		int aElements[size] =
+		if (accent == oldAccent)
 		{
-			COLOR_ACTIVECAPTION,
-			COLOR_GRADIENTACTIVECAPTION,
-			COLOR_HIGHLIGHT,
-			COLOR_HOTLIGHT,
-			COLOR_MENUHILIGHT
-		};
-		DWORD aOldColors[size];
-		DWORD aNewColors[size];
-
-		for (int i = 0; i < size; i++)
-		{
-			aOldColors[i] = GetSysColor(aElements[i]);
-			aNewColors[i] = RGB(GetRValue(accent), GetGValue(accent), GetBValue(accent));
+			break;
 		}
+		else
+		{
+			ModifyStyles();
+			SaveCurrentAccentColors();
+			int aElements[size] =
+			{
+				COLOR_ACTIVECAPTION,
+				COLOR_GRADIENTACTIVECAPTION,
+				COLOR_HIGHLIGHT,
+				COLOR_HOTLIGHT,
+				COLOR_MENUHILIGHT
+			};
+			DWORD aOldColors[size];
+			DWORD aNewColors[size];
 
-		SetSysColors(size, aElements, aNewColors);
+			for (int i = 0; i < size; i++)
+			{
+				aOldColors[i] = GetSysColor(aElements[i]);
+				aNewColors[i] = RGB(GetRValue(accent), GetGValue(accent), GetBValue(accent));
+			}
+
+			SetSysColors(size, aElements, aNewColors);
+			break;
+		}
 	}
-	break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
