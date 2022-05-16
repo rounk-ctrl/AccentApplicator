@@ -31,3 +31,5 @@
 *.out
 *.app
 /.vs
+/AccentApplicator/x64/Release
+/x64/Release

@@ -10,6 +10,7 @@
 #include <windows.h>
 // C RunTime Header Files
 #include <sstream>
+#include <shellapi.h>
 #include <iostream>
 #include <Uxtheme.h>
 #include <vsstyle.h>
