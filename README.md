@@ -3,6 +3,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/rounk-ctrl/AccentApplicator)
 ![Lines of code](https://img.shields.io/tokei/lines/github/rounk-ctrl/AccentApplicator)
 ![License](https://img.shields.io/github/license/rounk-ctrl/AccentApplicator)
+![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/rounk-ctrl/AccentApplicator)
 
 A tool to apply accent color to win32 controls. <br />
 Works with Windows 10 only. <br />
