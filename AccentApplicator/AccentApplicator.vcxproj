@@ -155,7 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="AccentApplicator.ico" />
-    <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

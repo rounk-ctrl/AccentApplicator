@@ -7,7 +7,6 @@
 #define IDS_APP_TITLE                   103
 #define IDS_APPTOOLTIP                  104
 #define IDI_ASDF                        107
-#define IDI_SMALL                       108
 #define IDC_ASDF                        109
 #define IDR_MAINFRAME                   128
 #define IDR_MENU1                       129

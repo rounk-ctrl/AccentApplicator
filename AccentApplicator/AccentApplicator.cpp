@@ -15,7 +15,6 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 HICON hMainIcon;
 NOTIFYICONDATA nidApp;
 UINT menuItemId;
-HWND hWnd;
 POINT ok;
 
 // Forward declarations of functions:
@@ -462,7 +461,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	BOOL bRet;
 
 	// Main message loop:
-	while ((bRet = GetMessage(&msg, hWnd, 0, 0)) != 0)
+	while ((bRet = GetMessage(&msg, nullptr, 0, 0)) != 0)
 	{
 		if (bRet == -1)
 		{
@@ -477,7 +476,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	return (int)msg.wParam;
 }
-
+BOOL TrayIcon(HWND hWnd, HINSTANCE hInst)
+{
+	hMainIcon = LoadIcon(hInst, (LPCTSTR)MAKEINTRESOURCE(IDI_ASDF));
+	nidApp.cbSize = sizeof(NOTIFYICONDATA);
+	nidApp.hWnd = (HWND)hWnd;
+	nidApp.uID = IDI_ASDF;
+	nidApp.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
+	nidApp.hIcon = hMainIcon;
+	nidApp.uCallbackMessage = WM_USER_SHELLICON;
+	nidApp.uVersion = NOTIFYICON_VERSION_4;
+	LoadString(hInst, IDS_APP_TITLE, nidApp.szTip, MAX_LOADSTRING);
+	Shell_NotifyIcon(NIM_ADD, &nidApp);
+	return TRUE;
+}
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
 	WNDCLASSEXW wcex;
@@ -502,22 +514,13 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
 	hInst = hInstance; // Store instance handle in our global variable
 
-	hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+	HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, CW_USEDEFAULT, 840, 470, nullptr, nullptr, hInstance, nullptr);
 	if (!hWnd)
 	{
 		return FALSE;
 	}
-	hMainIcon = LoadIcon(hInst, (LPCTSTR)MAKEINTRESOURCE(IDI_ASDF));
-	nidApp.cbSize = sizeof(NOTIFYICONDATA);
-	nidApp.hWnd = (HWND)hWnd;
-	nidApp.uID = IDI_ASDF;
-	nidApp.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
-	nidApp.hIcon = hMainIcon;
-	nidApp.uCallbackMessage = WM_USER_SHELLICON;
-	nidApp.uVersion = NOTIFYICON_VERSION_4;
-	LoadString(hInst, IDS_APP_TITLE, nidApp.szTip, MAX_LOADSTRING);
-	Shell_NotifyIcon(NIM_ADD, &nidApp);
+	TrayIcon(hWnd, hInst);
 	return TRUE;
 }
 void ShowContextMenu(HWND hwnd, POINT pt)
@@ -556,8 +559,13 @@ void ShowContextMenu(HWND hwnd, POINT pt)
 }
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	static UINT s_uTaskbarRestart;
 	switch (message)
 	{
+	case WM_CREATE:
+	{
+		s_uTaskbarRestart = RegisterWindowMessage(TEXT("TaskbarCreated"));
+	}
 	case WM_USER_SHELLICON:
 		// systray msg callback 
 		switch (LOWORD(lParam))
@@ -600,6 +608,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 	}
 	default:
+		if (message == s_uTaskbarRestart) {
+			TrayIcon(hWnd, hInst);
+		}
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 	return 0;
