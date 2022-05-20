@@ -20,7 +20,7 @@ Works with Windows 10 only. <br />
  - [x] Explorer Listview
  - [x] Explorer Toolbar (only when active)
  - [x] ItemsView
- - [ ] Spin
+ - [x] Spin
  - [ ] Trackbar
  - [ ] Radio button
  - [ ] Progress

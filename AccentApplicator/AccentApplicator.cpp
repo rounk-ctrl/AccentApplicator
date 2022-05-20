@@ -48,6 +48,13 @@ inline int PixA(BYTE* pPixel)
 
 #pragma endregion
 
+void AccentColorize(BYTE* pPixel, COLORREF color)
+{
+	pPixel[2] = GetRValue(color);
+	pPixel[1] = GetGValue(color);
+	pPixel[0] = GetBValue(color);
+}
+
 int RecolorizeBitmap(HBITMAP hbm)
 {
     BITMAP bm;
@@ -75,259 +82,289 @@ int RecolorizeBitmap(HBITMAP hbm)
             if ((r == 0 && g == 120 && b == 215) || (r == 0 && g == 84 && b == 153))
             {
                 // Main Blue Color for Buttons, Comboboxes, etc.
-                pPixel[2] = GetRValue(accent);
-                pPixel[1] = GetGValue(accent);
-                pPixel[0] = GetBValue(accent);
+				AccentColorize(pPixel, accent);
             }
             else if (r == 229 && g == 241 && b == 251)
             {
                 // Hovered Button (DARK BLUE)
-                pPixel[2] = GetRValue(accentLight3);
-                pPixel[1] = GetGValue(accentLight3);
-                pPixel[0] = GetBValue(accentLight3);
+				AccentColorize(pPixel, accentLight3);
             }
             else if (r == 204 && g == 228 && b == 247)
             {
                 // Hovered Button (DARK BLUE)
-                pPixel[2] = GetRValue(accentLight2);
-                pPixel[1] = GetGValue(accentLight2);
-                pPixel[0] = GetBValue(accentLight2);
+				AccentColorize(pPixel, accentLight2);
             }
             else if (r == 216 && g == 234 && b == 249)
             {
                 // Tab (LIGHT BLUE)
-                pPixel[2] = GetRValue(accentLight3);
-                pPixel[1] = GetGValue(accentLight3);
-                pPixel[0] = GetBValue(accentLight3);
+				AccentColorize(pPixel, accentLight3);
             }
             else if ((r == 0 && g == 56 && b == 102) || (r == 0 && g == 28 && b == 51))
             {
                 // Toolbar Item / Item Corner (VERY LIGHT BLUE)
-                pPixel[2] = GetRValue(accentLight3);
-                pPixel[1] = GetGValue(accentLight3);
-                pPixel[0] = GetBValue(accentLight3);
+				AccentColorize(pPixel, accentLight3);
             }
             else if ((r == 0 && g == 27 && b == 50) || (r == 0 && g == 14 && b == 26))
             {
                 // Explorer Item / Inactive Explorer Item Hover (VERY LIGHT BLUE)
-				pPixel[2] = GetRValue(accentLight3);
-				pPixel[1] = GetGValue(accentLight3);
-				pPixel[0] = GetBValue(accentLight3);
+				AccentColorize(pPixel, accentLight3);
             }
             else if (r == 217 && g == 235 && b == 249)
             {
                 // Items View Header
-                pPixel[2] = GetRValue(accentLight3);
-                pPixel[1] = GetGValue(accentLight3);
-                pPixel[0] = GetBValue(accentLight3);
+				AccentColorize(pPixel, accentLight3);
             }
             else if (r == 188 && g == 220 && b == 244)
             {
                 // Items View Header
-                pPixel[2] = GetRValue(accentLight3);
-                pPixel[1] = GetGValue(accentLight3);
-                pPixel[0] = GetBValue(accentLight3);
+				AccentColorize(pPixel, accentLight3);
             }
             else if (r == 35 && g == 130 && b == 217)
             {
-                pPixel[2] = GetRValue(accent);
-                pPixel[1] = GetGValue(accent);
-                pPixel[0] = GetBValue(accent);
+				AccentColorize(pPixel, accent);
             }
             else if (r == 83 && g == 150 && b == 223)
             {
-                pPixel[2] = GetRValue(accentLight1);
-                pPixel[1] = GetGValue(accentLight1);
-                pPixel[0] = GetBValue(accentLight1);
+				AccentColorize(pPixel, accentLight1);
             }
             else if (r == 119 && g == 169 && b == 228)
             {
-                pPixel[2] = GetRValue(accentLight1);
-                pPixel[1] = GetGValue(accentLight1);
-                pPixel[0] = GetBValue(accentLight1);
+				AccentColorize(pPixel, accentLight1);
             }
             else if (r == 134 && g == 178 && b == 230)
             {
-                pPixel[2] = GetRValue(accentLight2);
-                pPixel[1] = GetGValue(accentLight2);
-                pPixel[0] = GetBValue(accentLight2);
+				AccentColorize(pPixel, accentLight2);
             }
             else if (r == 188 && g == 211 && b == 240)
             {
-                pPixel[2] = GetRValue(accentLight3);
-                pPixel[1] = GetGValue(accentLight3);
-                pPixel[0] = GetBValue(accentLight3);
+				AccentColorize(pPixel, accentLight3);
             }
             else if (r == 223 && g == 233 && b == 248)
             {
-                pPixel[2] = GetRValue(accentLight3);
-                pPixel[1] = GetGValue(accentLight3);
-                pPixel[0] = GetBValue(accentLight3);
+				AccentColorize(pPixel, accentLight3);
             }
             else if (r == 25 && g == 96 && b == 159)
             {
-                pPixel[2] = GetRValue(accent);
-                pPixel[1] = GetGValue(accent);
-                pPixel[0] = GetBValue(accent);
+				AccentColorize(pPixel, accent);
             }
             else if (r == 36 && g == 131 && b == 218)
             {
-                pPixel[2] = GetRValue(accent);
-                pPixel[1] = GetGValue(accent);
-                pPixel[0] = GetBValue(accent);
+				AccentColorize(pPixel, accent);
             }
             else if (r == 64 && g == 118 && b == 173)
             {
-                pPixel[2] = GetRValue(accentLight1);
-                pPixel[1] = GetGValue(accentLight1);
-                pPixel[0] = GetBValue(accentLight1);
+				AccentColorize(pPixel, accentLight1);
             }
             else if (r == 93 && g == 138 && b == 185)
             {
-                pPixel[2] = GetRValue(accentLight1);
-                pPixel[1] = GetGValue(accentLight1);
-                pPixel[0] = GetBValue(accentLight1);
+				AccentColorize(pPixel, accentLight1);
             }
             else if (r == 106 && g == 148 && b == 191)
             {
-                pPixel[2] = GetRValue(accentLight2);
-                pPixel[1] = GetGValue(accentLight2);
-                pPixel[0] = GetBValue(accentLight2);
+				AccentColorize(pPixel, accentLight2);
             }
             else if (r == 150 && g == 182 && b == 215)
             {
-                pPixel[2] = GetRValue(accentLight2);
-                pPixel[1] = GetGValue(accentLight2);
-                pPixel[0] = GetBValue(accentLight2);
+				AccentColorize(pPixel, accentLight2);
             }
             else if (r == 178 && g == 206 && b == 231)
             {
-                pPixel[2] = GetRValue(accentLight2);
-                pPixel[1] = GetGValue(accentLight2);
-                pPixel[0] = GetBValue(accentLight2);
+				AccentColorize(pPixel, accentLight2);
             }
             else if (r == 196 && g == 221 && b == 242)
             {
-                pPixel[2] = GetRValue(accentLight2);
-                pPixel[1] = GetGValue(accentLight2);
-                pPixel[0] = GetBValue(accentLight2);
+				AccentColorize(pPixel, accentLight2);
             }
             else if (r == 84 && g == 151 && b == 223)
             {
-                pPixel[2] = GetRValue(accentLight1);
-                pPixel[1] = GetGValue(accentLight1);
-                pPixel[0] = GetBValue(accentLight1);
+				AccentColorize(pPixel, accentLight1);
             }
             else if (r == 176 && g == 203 && b == 238)
             {
-                pPixel[2] = GetRValue(accentLight3);
-                pPixel[1] = GetGValue(accentLight3);
-                pPixel[0] = GetBValue(accentLight3);
+				AccentColorize(pPixel, accentLight3);
             }
             else if (r == 27 && g == 96 && b == 160)
             {
-                pPixel[2] = GetRValue(accent);
-                pPixel[1] = GetGValue(accent);
-                pPixel[0] = GetBValue(accent);
+				AccentColorize(pPixel, accent);
             }
             else if (r == 65 && g == 119 && b == 173)
             {
-                pPixel[2] = GetRValue(accentLight1);
-                pPixel[1] = GetGValue(accentLight1);
-                pPixel[0] = GetBValue(accentLight1);
+				AccentColorize(pPixel, accentLight1);
             }
             else if (r == 140 && g == 174 && b == 209)
             {
-                pPixel[2] = GetRValue(accentLight2);
-                pPixel[1] = GetGValue(accentLight2);
-                pPixel[0] = GetBValue(accentLight2);
+				AccentColorize(pPixel, accentLight2);
             }
             else if (r == 51 && g == 147 && b == 223)
             {
-                pPixel[2] = GetRValue(accentLight1);
-                pPixel[1] = GetGValue(accentLight1);
-                pPixel[0] = GetBValue(accentLight1);
+				AccentColorize(pPixel, accentLight1);
             }
             else if (r == 66 && g == 142 && b == 221)
             {
-                pPixel[2] = GetRValue(accentLight1);
-                pPixel[1] = GetGValue(accentLight1);
-                pPixel[0] = GetBValue(accentLight1);
+				AccentColorize(pPixel, accentLight1);
             }
             else if (r == 51 && g == 109 && b == 167)
             {
-                pPixel[2] = GetRValue(accent);
-                pPixel[1] = GetGValue(accent);
-                pPixel[0] = GetBValue(accent);
+				AccentColorize(pPixel, accent);
             }
             else if (r == 184 && g == 208 && b == 240)
             {
-                pPixel[2] = GetRValue(accentLight3);
-                pPixel[1] = GetGValue(accentLight3);
-                pPixel[0] = GetBValue(accentLight3);
+				AccentColorize(pPixel, accentLight3);
             }
             else if (r == 186 && g == 213 && b == 236)
             {
-                pPixel[2] = GetRValue(accentLight2);
-                pPixel[1] = GetGValue(accentLight2);
-                pPixel[0] = GetBValue(accentLight2);
+				AccentColorize(pPixel, accentLight2);
             }
             else if (r == 146 && g == 179 && b == 213)
             {
-                pPixel[2] = GetRValue(accentLight2);
-                pPixel[1] = GetGValue(accentLight2);
-                pPixel[0] = GetBValue(accentLight2);
+				AccentColorize(pPixel, accentLight2);
             }
             else if (r == 176 && g == 205 && b == 230)
             {
-                pPixel[2] = GetRValue(accentLight2);
-                pPixel[1] = GetGValue(accentLight2);
-                pPixel[0] = GetBValue(accentLight2);
+				AccentColorize(pPixel, accentLight2);
             }
+			// spin
+
+            else if (r == 86 && g == 157 && b == 229)
+            {
+				AccentColorize(pPixel, accentLight1);
+            }
+            else if (r == 126 && g == 180 && b == 234)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 225 && g == 239 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 227 && g == 240 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 228 && g == 241 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 230 && g == 241 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 231 && g == 242 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 232 && g == 242 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 234 && g == 243 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 235 && g == 244 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 224 && g == 238 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 223 && g == 238 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 222 && g == 237 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 221 && g == 237 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight3);
+            }
+            else if (r == 218 && g == 235 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 217 && g == 235 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 215 && g == 234 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 214 && g == 233 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 212 && g == 232 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 210 && g == 231 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 208 && g == 230 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 206 && g == 229 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 204 && g == 228 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 202 && g == 227 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 200 && g == 226 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 198 && g == 225 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+            else if (r == 197 && g == 225 && b == 252)
+            {
+				AccentColorize(pPixel, accentLight2);
+            }
+
 
 			// accent auto
 			if (r == GetRValue(oldAccent) && g == GetGValue(oldAccent) && b == GetBValue(oldAccent))
 			{
-				pPixel[2] = GetRValue(accent);
-				pPixel[1] = GetGValue(accent);
-				pPixel[0] = GetBValue(accent);
+				AccentColorize(pPixel, accent);
 			}
-			if (r == GetRValue(oldAccentLight1) && g == GetGValue(oldAccentLight1) && b == GetBValue(oldAccentLight1))
+			else if (r == GetRValue(oldAccentLight1) && g == GetGValue(oldAccentLight1) && b == GetBValue(oldAccentLight1))
 			{
-				pPixel[2] = GetRValue(accentLight1);
-				pPixel[1] = GetGValue(accentLight1);
-				pPixel[0] = GetBValue(accentLight1);
+				AccentColorize(pPixel, accentLight1);
 			}
-			if (r == GetRValue(oldAccentLight2) && g == GetGValue(oldAccentLight2) && b == GetBValue(oldAccentLight2))
+			else if (r == GetRValue(oldAccentLight2) && g == GetGValue(oldAccentLight2) && b == GetBValue(oldAccentLight2))
 			{
-				pPixel[2] = GetRValue(accentLight2);
-				pPixel[1] = GetGValue(accentLight2);
-				pPixel[0] = GetBValue(accentLight2);
+				AccentColorize(pPixel, accentLight2);
 			}
-			if (r == GetRValue(oldAccentLight3) && g == GetGValue(oldAccentLight3) && b == GetBValue(oldAccentLight3))
+			else if (r == GetRValue(oldAccentLight3) && g == GetGValue(oldAccentLight3) && b == GetBValue(oldAccentLight3))
 			{
-				pPixel[2] = GetRValue(accentLight3);
-				pPixel[1] = GetGValue(accentLight3);
-				pPixel[0] = GetBValue(accentLight3);
+				AccentColorize(pPixel, accentLight3);
 			}
-			if (r == GetRValue(oldAccentDark1) && g == GetGValue(oldAccentDark1) && b == GetBValue(oldAccentDark1))
+			else if (r == GetRValue(oldAccentDark1) && g == GetGValue(oldAccentDark1) && b == GetBValue(oldAccentDark1))
 			{
-				pPixel[2] = GetRValue(accentDark1);
-				pPixel[1] = GetGValue(accentDark1);
-				pPixel[0] = GetBValue(accentDark1);
+				AccentColorize(pPixel, accentDark1);
 			}
-			if (r == GetRValue(oldAccentDark2) && g == GetGValue(oldAccentDark2) && b == GetBValue(oldAccentDark2))
+			else if (r == GetRValue(oldAccentDark2) && g == GetGValue(oldAccentDark2) && b == GetBValue(oldAccentDark2))
 			{
-				pPixel[2] = GetRValue(accentDark2);
-				pPixel[1] = GetGValue(accentDark2);
-				pPixel[0] = GetBValue(accentDark2);
+				AccentColorize(pPixel, accentDark2);
 			}
-			if (r == GetRValue(oldAccentDark3) && g == GetGValue(oldAccentDark3) && b == GetBValue(oldAccentDark3))
+			else if (r == GetRValue(oldAccentDark3) && g == GetGValue(oldAccentDark3) && b == GetBValue(oldAccentDark3))
 			{
-				pPixel[2] = GetRValue(accentDark3);
-				pPixel[1] = GetGValue(accentDark3);
-				pPixel[0] = GetBValue(accentDark3);
+				AccentColorize(pPixel, accentDark3);
 			}
+
             //pPixel[3] = 1;
             pPixel += 4;
         }
