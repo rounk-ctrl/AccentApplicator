@@ -48,6 +48,10 @@ inline int PixA(BYTE* pPixel)
 
 #pragma endregion
 
+// PURPOSE: Changes pixel to specified COLORREF.
+// 
+// pPixel - the pointer to the byte which has the bitmap.
+// color - COLORREF containing the color you want the bitmap to have.
 void AccentColorize(BYTE* pPixel, COLORREF color)
 {
 	pPixel[2] = GetRValue(color);
@@ -79,288 +83,142 @@ int RecolorizeBitmap(HBITMAP hbm)
             int b = PixB(pPixel); // [0]
             int a = PixA(pPixel); // [3]
 
-            if ((r == 0 && g == 120 && b == 215) || (r == 0 && g == 84 && b == 153))
-            {
-                // Main Blue Color for Buttons, Comboboxes, etc.
-				AccentColorize(pPixel, accent);
-            }
-            else if (r == 229 && g == 241 && b == 251)
-            {
-                // Hovered Button (DARK BLUE)
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 204 && g == 228 && b == 247)
-            {
-                // Hovered Button (DARK BLUE)
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 216 && g == 234 && b == 249)
-            {
-                // Tab (LIGHT BLUE)
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if ((r == 0 && g == 56 && b == 102) || (r == 0 && g == 28 && b == 51))
-            {
-                // Toolbar Item / Item Corner (VERY LIGHT BLUE)
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if ((r == 0 && g == 27 && b == 50) || (r == 0 && g == 14 && b == 26))
-            {
-                // Explorer Item / Inactive Explorer Item Hover (VERY LIGHT BLUE)
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 217 && g == 235 && b == 249)
-            {
-                // Items View Header
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 188 && g == 220 && b == 244)
-            {
-                // Items View Header
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 35 && g == 130 && b == 217)
+            if ((r == 0 && g == 120 && b == 215) || (r == 0 && g == 84 && b == 153)|| /*Main Blue Color for Buttons, Comboboxes, etc*/
+				(r == 35 && g == 130 && b == 217)||
+				(r == 25 && g == 96 && b == 159) ||
+				(r == 36 && g == 131 && b == 218)||
+				(r == 27 && g == 96 && b == 160) ||
+				(r == 51 && g == 109 && b == 167))
             {
 				AccentColorize(pPixel, accent);
             }
-            else if (r == 83 && g == 150 && b == 223)
+            else if (
+				(r == 83 && g == 150 && b == 223) ||
+				(r == 119 && g == 169 && b == 228)||
+				(r == 64 && g == 118 && b == 173) ||
+				(r == 93 && g == 138 && b == 185) ||
+				(r == 84 && g == 151 && b == 223) ||
+				(r == 65 && g == 119 && b == 173) ||
+				(r == 51 && g == 147 && b == 223) ||
+				(r == 66 && g == 142 && b == 221))
             {
 				AccentColorize(pPixel, accentLight1);
             }
-            else if (r == 119 && g == 169 && b == 228)
-            {
-				AccentColorize(pPixel, accentLight1);
-            }
-            else if (r == 134 && g == 178 && b == 230)
+            else if (
+				(r == 204 && g == 228 && b == 247)|| /*Hovered Button*/
+				(r == 134 && g == 178 && b == 230)||
+				(r == 106 && g == 148 && b == 191)||
+				(r == 150 && g == 182 && b == 215)||
+				(r == 178 && g == 206 && b == 231)||
+				(r == 196 && g == 221 && b == 242)||
+				(r == 140 && g == 174 && b == 209)||
+				(r == 186 && g == 213 && b == 236)||
+				(r == 146 && g == 179 && b == 213)||
+				(r == 176 && g == 205 && b == 230))
             {
 				AccentColorize(pPixel, accentLight2);
             }
-            else if (r == 188 && g == 211 && b == 240)
+            else if (
+				(r == 229 && g == 241 && b == 251) ||											/*Hovered Button*/
+				(r == 216 && g == 234 && b == 249) ||											/*Tab*/
+				(r == 0 && g == 56 && b == 102)	   || (r == 0 && g == 28 && b == 51)     ||		/*Toolbar Item / Item Corner*/
+				(r == 0 && g == 27 && b == 50)     || (r == 0 && g == 14 && b == 26)     ||		/*Explorer Item / Inactive Explorer Item Hover*/
+				(r == 217 && g == 235 && b == 249) || (r == 188 && g == 220 && b == 244) ||		/*Items View Header*/
+				(r == 188 && g == 211 && b == 240) ||
+				(r == 223 && g == 233 && b == 248) ||
+				(r == 176 && g == 203 && b == 238) ||
+				(r == 184 && g == 208 && b == 240))
             {
 				AccentColorize(pPixel, accentLight3);
             }
-            else if (r == 223 && g == 233 && b == 248)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 25 && g == 96 && b == 159)
-            {
-				AccentColorize(pPixel, accent);
-            }
-            else if (r == 36 && g == 131 && b == 218)
-            {
-				AccentColorize(pPixel, accent);
-            }
-            else if (r == 64 && g == 118 && b == 173)
-            {
-				AccentColorize(pPixel, accentLight1);
-            }
-            else if (r == 93 && g == 138 && b == 185)
-            {
-				AccentColorize(pPixel, accentLight1);
-            }
-            else if (r == 106 && g == 148 && b == 191)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 150 && g == 182 && b == 215)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 178 && g == 206 && b == 231)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 196 && g == 221 && b == 242)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 84 && g == 151 && b == 223)
-            {
-				AccentColorize(pPixel, accentLight1);
-            }
-            else if (r == 176 && g == 203 && b == 238)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 27 && g == 96 && b == 160)
-            {
-				AccentColorize(pPixel, accent);
-            }
-            else if (r == 65 && g == 119 && b == 173)
-            {
-				AccentColorize(pPixel, accentLight1);
-            }
-            else if (r == 140 && g == 174 && b == 209)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 51 && g == 147 && b == 223)
-            {
-				AccentColorize(pPixel, accentLight1);
-            }
-            else if (r == 66 && g == 142 && b == 221)
-            {
-				AccentColorize(pPixel, accentLight1);
-            }
-            else if (r == 51 && g == 109 && b == 167)
-            {
-				AccentColorize(pPixel, accent);
-            }
-            else if (r == 184 && g == 208 && b == 240)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 186 && g == 213 && b == 236)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 146 && g == 179 && b == 213)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 176 && g == 205 && b == 230)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-			// spin
 
-            else if (r == 86 && g == 157 && b == 229)
-            {
+			// spin
+			else if (r == 86 && g == 157 && b == 229)
+			{
 				AccentColorize(pPixel, accentLight1);
-            }
-            else if (r == 126 && g == 180 && b == 234)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 225 && g == 239 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 227 && g == 240 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 228 && g == 241 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 230 && g == 241 && b == 252)
+			}
+            else if (
+				(r == 225 && g == 239 && b == 252)||
+				(r == 227 && g == 240 && b == 252)||
+				(r == 228 && g == 241 && b == 252)||
+				(r == 230 && g == 241 && b == 252)||
+				(r == 231 && g == 242 && b == 252)||
+				(r == 232 && g == 242 && b == 252)||
+				(r == 234 && g == 243 && b == 252)||
+				(r == 235 && g == 244 && b == 252)||
+				(r == 224 && g == 238 && b == 252)||
+				(r == 223 && g == 238 && b == 252)||
+				(r == 222 && g == 237 && b == 252)||
+				(r == 221 && g == 237 && b == 252))
             {
 				AccentColorize(pPixel, accentLight3);
             }
-            else if (r == 231 && g == 242 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 232 && g == 242 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 234 && g == 243 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 235 && g == 244 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 224 && g == 238 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 223 && g == 238 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 222 && g == 237 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 221 && g == 237 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (r == 218 && g == 235 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 217 && g == 235 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 215 && g == 234 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 214 && g == 233 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 212 && g == 232 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 210 && g == 231 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 208 && g == 230 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 206 && g == 229 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 204 && g == 228 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 202 && g == 227 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 200 && g == 226 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 198 && g == 225 && b == 252)
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (r == 197 && g == 225 && b == 252)
+            else if (
+				(r == 126 && g == 180 && b == 234)||
+				(r == 218 && g == 235 && b == 252)||
+				(r == 217 && g == 235 && b == 252)||
+				(r == 215 && g == 234 && b == 252)||
+				(r == 214 && g == 233 && b == 252)||
+				(r == 212 && g == 232 && b == 252)||
+				(r == 210 && g == 231 && b == 252)||
+				(r == 208 && g == 230 && b == 252)||
+				(r == 206 && g == 229 && b == 252)||
+				(r == 204 && g == 228 && b == 252)||
+				(r == 202 && g == 227 && b == 252)||
+				(r == 200 && g == 226 && b == 252)||
+				(r == 198 && g == 225 && b == 252)||
+				(r == 197 && g == 225 && b == 252))
             {
 				AccentColorize(pPixel, accentLight2);
             }
 
 
 			// accent auto
-			if (r == GetRValue(oldAccent) && g == GetGValue(oldAccent) && b == GetBValue(oldAccent))
+			if (r == GetRValue(oldAccent) && 
+				g == GetGValue(oldAccent) && 
+				b == GetBValue(oldAccent))
 			{
 				AccentColorize(pPixel, accent);
 			}
-			else if (r == GetRValue(oldAccentLight1) && g == GetGValue(oldAccentLight1) && b == GetBValue(oldAccentLight1))
+			else if (
+				r == GetRValue(oldAccentLight1) && 
+				g == GetGValue(oldAccentLight1) && 
+				b == GetBValue(oldAccentLight1))
 			{
 				AccentColorize(pPixel, accentLight1);
 			}
-			else if (r == GetRValue(oldAccentLight2) && g == GetGValue(oldAccentLight2) && b == GetBValue(oldAccentLight2))
+			else if (
+				r == GetRValue(oldAccentLight2) && 
+				g == GetGValue(oldAccentLight2) && 
+				b == GetBValue(oldAccentLight2))
 			{
 				AccentColorize(pPixel, accentLight2);
 			}
-			else if (r == GetRValue(oldAccentLight3) && g == GetGValue(oldAccentLight3) && b == GetBValue(oldAccentLight3))
+			else if (
+				r == GetRValue(oldAccentLight3) &&
+				g == GetGValue(oldAccentLight3) && 
+				b == GetBValue(oldAccentLight3))
 			{
 				AccentColorize(pPixel, accentLight3);
 			}
-			else if (r == GetRValue(oldAccentDark1) && g == GetGValue(oldAccentDark1) && b == GetBValue(oldAccentDark1))
+			else if (
+				r == GetRValue(oldAccentDark1) && 
+				g == GetGValue(oldAccentDark1) &&
+				b == GetBValue(oldAccentDark1))
 			{
 				AccentColorize(pPixel, accentDark1);
 			}
-			else if (r == GetRValue(oldAccentDark2) && g == GetGValue(oldAccentDark2) && b == GetBValue(oldAccentDark2))
+			else if (
+				r == GetRValue(oldAccentDark2) &&
+				g == GetGValue(oldAccentDark2) &&
+				b == GetBValue(oldAccentDark2))
 			{
 				AccentColorize(pPixel, accentDark2);
 			}
-			else if (r == GetRValue(oldAccentDark3) && g == GetGValue(oldAccentDark3) && b == GetBValue(oldAccentDark3))
+			else if (
+				r == GetRValue(oldAccentDark3) &&
+				g == GetGValue(oldAccentDark3) &&
+				b == GetBValue(oldAccentDark3))
 			{
 				AccentColorize(pPixel, accentDark3);
 			}
@@ -386,7 +244,7 @@ int ModifyStyle(LPCWSTR pszClassList, int iPartId, int iStateId, int iPropId)
 
 void ModifyStyles()
 {
-    int i,j;
+    int i;
     ModifyStyle(VSCLASS_BUTTON, BP_RADIOBUTTON, 0, 3);
     ModifyStyle(VSCLASS_BUTTON, BP_CHECKBOX, 0, 3);
 	ModifyStyle(VSCLASS_BUTTON, BP_PUSHBUTTON, 0, TMT_DIBDATA);
@@ -450,6 +308,7 @@ void ModifyStyles()
         ModifyStyle(L"BB::Toolbar", i, 0, TMT_DIBDATA); // Explorer Breadcrumbs Highlight color
     }
 }
+
 const int size = 5;
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -500,10 +359,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	// Main message loop:
 	while ((bRet = GetMessage(&msg, nullptr, 0, 0)) != 0)
 	{
-		if (bRet == -1)
-		{
-			// handle the error and possibly exit
-		}
+		if (bRet == -1) {  }
 		else
 		{
 			TranslateMessage(&msg);
