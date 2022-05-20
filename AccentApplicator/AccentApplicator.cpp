@@ -594,12 +594,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				COLOR_HOTLIGHT,
 				COLOR_MENUHILIGHT
 			};
-			DWORD aOldColors[size];
 			DWORD aNewColors[size];
 
 			for (int i = 0; i < size; i++)
 			{
-				aOldColors[i] = GetSysColor(aElements[i]);
 				aNewColors[i] = RGB(GetRValue(accent), GetGValue(accent), GetBValue(accent));
 			}
 
