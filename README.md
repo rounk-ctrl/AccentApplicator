@@ -21,7 +21,7 @@ Works with Windows 10 only. <br />
  - [x] Explorer Toolbar (only when active)
  - [x] ItemsView
  - [x] Spin
- - [ ] Trackbar
+ - [x] Trackbar
  - [ ] Radio button
  - [ ] Progress
 

@@ -88,7 +88,12 @@ int RecolorizeBitmap(HBITMAP hbm)
 				(r == 25 && g == 96 && b == 159) ||
 				(r == 36 && g == 131 && b == 218)||
 				(r == 27 && g == 96 && b == 160) ||
-				(r == 51 && g == 109 && b == 167))
+				(r == 51 && g == 109 && b == 167)||
+				(r == 6 && g == 123 && b == 216)||
+				(r == 5 && g == 123 && b == 216)||
+				(r == 43 && g == 143 && b == 222)||
+				(r == 41 && g == 142 && b == 221)||
+				(r == 0 && g == 122 && b == 217))
             {
 				AccentColorize(pPixel, accent);
             }
@@ -127,11 +132,22 @@ int RecolorizeBitmap(HBITMAP hbm)
 				(r == 188 && g == 211 && b == 240) ||
 				(r == 223 && g == 233 && b == 248) ||
 				(r == 176 && g == 203 && b == 238) ||
-				(r == 184 && g == 208 && b == 240))
+				(r == 184 && g == 208 && b == 240)||
+				(r == 170 && g == 210 && b == 242)||
+				(r == 168 && g == 209 && b == 241)||
+				(r == 171 && g == 211 && b == 242)||
+				(r == 169 && g == 209 && b == 242)||
+				(r == 164 && g == 207 && b == 241)||
+				(r == 165 && g == 207 && b == 241))
             {
 				AccentColorize(pPixel, accentLight3);
             }
-
+			else if ((r == 0 && g == 60 && b == 107) || (r == 0 && g == 60 && b == 108))
+			{
+				pPixel[2] = GetRValue(accentDark2);
+				pPixel[1] = GetGValue(accentDark2);
+				pPixel[0] = GetBValue(accentDark2);
+			}
 			// spin
 			else if (r == 86 && g == 157 && b == 229)
 			{
@@ -231,6 +247,7 @@ int RecolorizeBitmap(HBITMAP hbm)
     delete[] pBits;
     return TRUE;
 }
+
 int ModifyStyle(LPCWSTR pszClassList, int iPartId, int iStateId, int iPropId)
 {
     HBITMAP hBitmap;
@@ -262,7 +279,8 @@ void ModifyStyles()
     }
     for (i = TKP_THUMB; i <= TKP_THUMBRIGHT; i++)
     {
-        ModifyStyle(VSCLASS_TRACKBAR, i, 0, TMT_DIBDATA);
+		ModifyStyle(VSCLASS_TRACKBAR, i, 0, TMT_DIBDATA);
+		ModifyStyle(VSCLASS_TRACKBAR, i, 0, 3);
     }
     ModifyStyle(VSCLASS_HEADERSTYLE, HP_HEADERITEM, 0, 2);
     for (i = LBCP_BORDER_HSCROLL; i <= LBCP_ITEM; i++)
