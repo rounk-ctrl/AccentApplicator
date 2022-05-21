@@ -15,6 +15,7 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 HICON hMainIcon;
 NOTIFYICONDATA nidApp;
 UINT menuItemId;
+HANDLE hHandle;
 POINT ok;
 
 // Forward declarations of functions:
@@ -334,6 +335,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_ LPWSTR    lpCmdLine,
     _In_ int       nCmdShow)
 {
+	hHandle = CreateMutex(NULL, TRUE, L"ACCENTAPPLICATOR");
+	if (ERROR_ALREADY_EXISTS == GetLastError())
+	{
+		// Program already running somewhere
+		return(1); // Exit program
+	}
+
 	UpdateAccentColors();
 	SaveCurrentAccentColors();
 	ModifyStyles();
@@ -384,7 +392,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			DispatchMessage(&msg);
 		}
 	}
-
+	ReleaseMutex(hHandle); // Explicitly release mutex
+	CloseHandle(hHandle); // close handle before terminating
 	return (int)msg.wParam;
 }
 BOOL TrayIcon(HWND hWnd, HINSTANCE hInst)
