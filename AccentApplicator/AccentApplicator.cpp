@@ -5,6 +5,8 @@
 #include "AccentApplicator.h"
 #include "AccentColorHelper.h"
 
+typedef void(*BitmapHandler)(int* r, int* g, int* b, int* a);
+
 #pragma region Pixel Color
 
 inline int PixClr(int val)
@@ -43,7 +45,50 @@ void AccentColorize(BYTE* pPixel, COLORREF color)
 	pPixel[0] = GetBValue(color);
 }
 
-int RecolorizeBitmap(HBITMAP hbm)
+#pragma region Colorize
+
+void Accent_Button(int* r, int* g, int* b, int* a)
+{
+	// PBS_HOT, PBS_DEFAULTED, PBS_DEFAULTED_ANIMATING outline
+	if (*r == 0 && *g == 120 && *b == 215)
+	{
+		*r = GetRValue(accent);
+		*g = GetGValue(accent);
+		*b = GetBValue(accent);
+	}
+	// PBS_HOT
+	else if (*r == 206 && *g == 229 && *b == 247)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+	// single pixel in top left of PBS_HOT
+	else if (*r == 229 && *g == 241 && *b == 251)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+	// PBS_PRESSED outline
+	else if (*r == 0 && *g == 84 && *b == 153)
+	{
+		*r = GetRValue(accentDark1);
+		*g = GetGValue(accentDark1);
+		*b = GetBValue(accentDark1);
+	}
+	// PBS_PRESSED
+	else if (*r == 204 && *g == 228 && *b == 247)
+	{
+		*r = GetRValue(accentLight2);
+		*g = GetGValue(accentLight2);
+		*b = GetBValue(accentLight2);
+	}
+}
+
+#pragma endregion
+
+int RecolorizeBitmap(HBITMAP hbm, BitmapHandler handler)
 {
     BITMAP bm;
     GetObject(hbm, sizeof(bm), &bm);
@@ -66,112 +111,6 @@ int RecolorizeBitmap(HBITMAP hbm)
             int g = PixG(pPixel); // [1]
             int b = PixB(pPixel); // [0]
             int a = PixA(pPixel); // [3]
-
-            if ((r == 0 && g == 120 && b == 215) || (r == 0 && g == 84 && b == 153)|| /*Main Blue Color for Buttons, Comboboxes, etc*/
-				(r == 35 && g == 130 && b == 217)||
-				(r == 25 && g == 96 && b == 159) ||
-				(r == 36 && g == 131 && b == 218)||
-				(r == 27 && g == 96 && b == 160) ||
-				(r == 51 && g == 109 && b == 167)||
-				(r == 6 && g == 123 && b == 216)||
-				(r == 5 && g == 123 && b == 216)||
-				(r == 43 && g == 143 && b == 222)||
-				(r == 41 && g == 142 && b == 221)||
-				(r == 0 && g == 122 && b == 217))
-            {
-				AccentColorize(pPixel, accent);
-            }
-            else if (
-				(r == 83 && g == 150 && b == 223) ||
-				(r == 119 && g == 169 && b == 228)||
-				(r == 64 && g == 118 && b == 173) ||
-				(r == 93 && g == 138 && b == 185) ||
-				(r == 84 && g == 151 && b == 223) ||
-				(r == 65 && g == 119 && b == 173) ||
-				(r == 51 && g == 147 && b == 223) ||
-				(r == 66 && g == 142 && b == 221))
-            {
-				AccentColorize(pPixel, accentLight1);
-            }
-            else if (
-				(r == 204 && g == 228 && b == 247)|| /*Hovered Button*/
-				(r == 134 && g == 178 && b == 230)||
-				(r == 106 && g == 148 && b == 191)||
-				(r == 150 && g == 182 && b == 215)||
-				(r == 178 && g == 206 && b == 231)||
-				(r == 196 && g == 221 && b == 242)||
-				(r == 140 && g == 174 && b == 209)||
-				(r == 186 && g == 213 && b == 236)||
-				(r == 146 && g == 179 && b == 213)||
-				(r == 176 && g == 205 && b == 230))
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-            else if (
-				(r == 229 && g == 241 && b == 251) ||											/*Hovered Button*/
-				(r == 216 && g == 234 && b == 249) ||											/*Tab*/
-				(r == 0 && g == 56 && b == 102)	   || (r == 0 && g == 28 && b == 51)     ||		/*Toolbar Item / Item Corner*/
-				(r == 0 && g == 27 && b == 50)     || (r == 0 && g == 14 && b == 26)     ||		/*Explorer Item / Inactive Explorer Item Hover*/
-				(r == 217 && g == 235 && b == 249) || (r == 188 && g == 220 && b == 244) ||		/*Items View Header*/
-				(r == 188 && g == 211 && b == 240) ||
-				(r == 223 && g == 233 && b == 248) ||
-				(r == 176 && g == 203 && b == 238) ||
-				(r == 184 && g == 208 && b == 240)||
-				(r == 170 && g == 210 && b == 242)||
-				(r == 168 && g == 209 && b == 241)||
-				(r == 171 && g == 211 && b == 242)||
-				(r == 169 && g == 209 && b == 242)||
-				(r == 164 && g == 207 && b == 241)||
-				(r == 165 && g == 207 && b == 241))
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-			else if ((r == 0 && g == 60 && b == 107) || (r == 0 && g == 60 && b == 108))
-			{
-				pPixel[2] = GetRValue(accentDark2);
-				pPixel[1] = GetGValue(accentDark2);
-				pPixel[0] = GetBValue(accentDark2);
-			}
-			// spin
-			else if (r == 86 && g == 157 && b == 229)
-			{
-				AccentColorize(pPixel, accentLight1);
-			}
-            else if (
-				(r == 225 && g == 239 && b == 252)||
-				(r == 227 && g == 240 && b == 252)||
-				(r == 228 && g == 241 && b == 252)||
-				(r == 230 && g == 241 && b == 252)||
-				(r == 231 && g == 242 && b == 252)||
-				(r == 232 && g == 242 && b == 252)||
-				(r == 234 && g == 243 && b == 252)||
-				(r == 235 && g == 244 && b == 252)||
-				(r == 224 && g == 238 && b == 252)||
-				(r == 223 && g == 238 && b == 252)||
-				(r == 222 && g == 237 && b == 252)||
-				(r == 221 && g == 237 && b == 252))
-            {
-				AccentColorize(pPixel, accentLight3);
-            }
-            else if (
-				(r == 126 && g == 180 && b == 234)||
-				(r == 218 && g == 235 && b == 252)||
-				(r == 217 && g == 235 && b == 252)||
-				(r == 215 && g == 234 && b == 252)||
-				(r == 214 && g == 233 && b == 252)||
-				(r == 212 && g == 232 && b == 252)||
-				(r == 210 && g == 231 && b == 252)||
-				(r == 208 && g == 230 && b == 252)||
-				(r == 206 && g == 229 && b == 252)||
-				(r == 204 && g == 228 && b == 252)||
-				(r == 202 && g == 227 && b == 252)||
-				(r == 200 && g == 226 && b == 252)||
-				(r == 198 && g == 225 && b == 252)||
-				(r == 197 && g == 225 && b == 252))
-            {
-				AccentColorize(pPixel, accentLight2);
-            }
-
 
 			// accent auto
 			if (r == GetRValue(oldAccent) && 
@@ -223,6 +162,13 @@ int RecolorizeBitmap(HBITMAP hbm)
 				AccentColorize(pPixel, accentDark3);
 			}
 
+			handler(&r, &g, &b, &a);
+
+			pPixel[2] = r;
+			pPixel[1] = g;
+			pPixel[0] = b;
+			pPixel[3] = a;
+
             //pPixel[3] = 1;
             pPixel += 4;
         }
@@ -232,7 +178,7 @@ int RecolorizeBitmap(HBITMAP hbm)
     return TRUE;
 }
 
-int ModifyStyle(LPCWSTR pszClassList, int iPartId, int iStateId, int iPropId)
+int ModifyStyle(LPCWSTR pszClassList, int iPartId, int iStateId, int iPropId, BitmapHandler handler)
 {
     HBITMAP hBitmap;
 
@@ -240,15 +186,16 @@ int ModifyStyle(LPCWSTR pszClassList, int iPartId, int iStateId, int iPropId)
     GetThemeBitmap(hTheme, iPartId, iStateId, iPropId, GBF_DIRECT, &hBitmap);
     CloseThemeData(hTheme);
 
-    return RecolorizeBitmap(hBitmap);
+    return RecolorizeBitmap(hBitmap, handler);
 }
 
 void ModifyStyles()
 {
     int i;
-    ModifyStyle(VSCLASS_BUTTON, BP_RADIOBUTTON, 0, 3);
-    ModifyStyle(VSCLASS_BUTTON, BP_CHECKBOX, 0, 3);
-	ModifyStyle(VSCLASS_BUTTON, BP_PUSHBUTTON, 0, TMT_DIBDATA);
+	ModifyStyle(VSCLASS_BUTTON, BP_PUSHBUTTON, 0, TMT_DIBDATA, Accent_Button);
+	/*
+	ModifyStyle(VSCLASS_BUTTON, BP_RADIOBUTTON, 0, 3);
+	ModifyStyle(VSCLASS_BUTTON, BP_CHECKBOX, 0, 3);
     for (i = CP_DROPDOWNBUTTON; i <= CP_DROPDOWNBUTTONLEFT; i++)
     {
         ModifyStyle(VSCLASS_COMBOBOX, i, 0, TMT_DIBDATA);
@@ -309,6 +256,7 @@ void ModifyStyles()
     {
         ModifyStyle(L"BB::Toolbar", i, 0, TMT_DIBDATA); // Explorer Breadcrumbs Highlight color
     }
+	*/
 }
 
 const int size = 5;
