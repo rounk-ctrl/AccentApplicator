@@ -16,7 +16,6 @@ jobs:
         configuration: [Release]
         platform: [x64, x86]
     runs-on: windows-latest
-    
     env:
       SOLUTION_FILE_PATH: .
       RELEASE_DIR: ${{ matrix.configuration }}

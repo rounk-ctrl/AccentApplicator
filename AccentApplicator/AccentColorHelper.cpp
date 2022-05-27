@@ -49,7 +49,6 @@ void UpdateAccentColors()
 		accentLight2 = GetImmersiveColorRGB(L"ImmersiveSystemAccentLight2");
 		accentLight3 = GetImmersiveColorRGB(L"ImmersiveSystemAccentLight3");
 
-
 		accentDark1 = GetImmersiveColorRGB(L"ImmersiveSystemAccentDark1");
 		accentDark2 = GetImmersiveColorRGB(L"ImmersiveSystemAccentDark2");
 		accentDark3 = GetImmersiveColorRGB(L"ImmersiveSystemAccentDark3");
@@ -62,7 +61,6 @@ void SaveCurrentAccentColors()
 	oldAccentLight1 = GetImmersiveColorRGB(L"ImmersiveSystemAccentLight1");
 	oldAccentLight2 = GetImmersiveColorRGB(L"ImmersiveSystemAccentLight2");
 	oldAccentLight3 = GetImmersiveColorRGB(L"ImmersiveSystemAccentLight3");
-
 
 	oldAccentDark1 = GetImmersiveColorRGB(L"ImmersiveSystemAccentDark1");
 	oldAccentDark2 = GetImmersiveColorRGB(L"ImmersiveSystemAccentDark2");

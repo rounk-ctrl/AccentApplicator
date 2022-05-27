@@ -5,24 +5,6 @@
 #include "AccentApplicator.h"
 #include "AccentColorHelper.h"
 
-#define MAX_LOADSTRING 100
-#define WM_USER_SHELLICON WM_USER + 1
-
-// Global Variables:
-HINSTANCE hInst;                                // current instance
-WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
-WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
-HICON hMainIcon;
-NOTIFYICONDATA nidApp;
-UINT menuItemId;
-HANDLE hHandle;
-POINT ok;
-
-// Forward declarations of functions:
-ATOM                MyRegisterClass(HINSTANCE hInstance);
-BOOL                InitInstance(HINSTANCE, int);
-LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-
 #pragma region Pixel Color
 
 inline int PixClr(int val)
@@ -49,10 +31,11 @@ inline int PixA(BYTE* pPixel)
 
 #pragma endregion
 
-// PURPOSE: Changes pixel to specified COLORREF.
+// PURPOSE: Changes pixels of a BYTE to specified COLORREF.
 // 
-// pPixel - the pointer to the byte which has the bitmap.
+// pPixel - the pointer to the BYTE* which has the bitmap.
 // color - COLORREF containing the color you want the bitmap to have.
+//
 void AccentColorize(BYTE* pPixel, COLORREF color)
 {
 	pPixel[2] = GetRValue(color);
