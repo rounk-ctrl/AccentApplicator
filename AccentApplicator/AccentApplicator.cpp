@@ -85,7 +85,189 @@ void Accent_Button(int* r, int* g, int* b, int* a)
 		*b = GetBValue(accentLight2);
 	}
 }
-
+void Accent_CheckBox(int* r, int* g, int* b, int* a)
+{
+	// outline and some pixels on hot checkbox states
+	if (*r == 0 && *g == 120 && *b == 215)
+	{
+		*r = GetRValue(accent);
+		*g = GetGValue(accent);
+		*b = GetBValue(accent);
+	}
+	// outline and some pixels on pressed checkbox states
+	else if (*r == 0 && *g == 84 && *b == 153)
+	{
+		*r = GetRValue(accentDark1);
+		*g = GetGValue(accentDark1);
+		*b = GetBValue(accentDark1);
+	}
+	// some pixels on hot checkbox states
+	else if (*r == 35 && *g == 130 && *b == 217)
+	{
+		*r = GetRValue(accent);
+		*g = GetGValue(accent);
+		*b = GetBValue(accent);
+	}
+	// some pixels on hot checkbox states
+	else if (*r == 83 && *g == 150 && *b == 223)
+	{
+		*r = GetRValue(accentLight1);
+		*g = GetGValue(accentLight1);
+		*b = GetBValue(accentLight1);
+	}
+	// some pixels on hot checkbox states
+	else if (*r == 134 && *g == 178 && *b == 230)
+	{
+		*r = GetRValue(accentLight2);
+		*g = GetGValue(accentLight2);
+		*b = GetBValue(accentLight2);
+	}
+	else if (*r == 119 && *g == 169 && *b == 228)
+	{
+		*r = GetRValue(accentLight2);
+		*g = GetGValue(accentLight2);
+		*b = GetBValue(accentLight2);
+	}
+	else if (*r == 188 && *g == 211 && *b == 240)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+	else if (*r == 36 && *g == 131 && *b == 218)
+	{
+		*r = GetRValue(accent);
+		*g = GetGValue(accent);
+		*b = GetBValue(accent);
+	}
+	else if (*r == 84 && *g == 151 && *b == 223)
+	{
+		*r = GetRValue(accentLight1);
+		*g = GetGValue(accentLight1);
+		*b = GetBValue(accentLight1);
+	}
+	else if (*r == 176 && *g == 203 && *b == 238)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+	else if (*r == 66 && *g == 142 && *b == 221)
+	{
+		*r = GetRValue(accentLight1);
+		*g = GetGValue(accentLight1);
+		*b = GetBValue(accentLight1);
+	}
+	else if (*r == 51 && *g == 147 && *b == 223)
+	{
+		*r = GetRValue(accentLight1);
+		*g = GetGValue(accentLight1);
+		*b = GetBValue(accentLight1);
+	}
+	else if (*r == 184 && *g == 208 && *b == 240)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+	// pressed background
+	else if (*r == 204 && *g == 228 && *b == 247)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+	else if (*r == 64 && *g == 118 && *b == 173)
+	{
+		*r = GetRValue(accentLight1);
+		*g = GetGValue(accentLight1);
+		*b = GetBValue(accentLight1);
+	}
+	else if (*r == 25 && *g == 96 && *b == 159)
+	{
+		*r = GetRValue(accent);
+		*g = GetGValue(accent);
+		*b = GetBValue(accent);
+	}
+	else if (*r == 106 && *g == 148 && *b == 191)
+	{
+		*r = GetRValue(accentLight2);
+		*g = GetGValue(accentLight2);
+		*b = GetBValue(accentLight2);
+	}
+	else if (*r == 150 && *g == 182 && *b == 215)
+	{
+		*r = GetRValue(accentLight2);
+		*g = GetGValue(accentLight2);
+		*b = GetBValue(accentLight2);
+	}
+	else if (*r == 93 && *g == 138 && *b == 185)
+	{
+		*r = GetRValue(accentLight1);
+		*g = GetGValue(accentLight1);
+		*b = GetBValue(accentLight1);
+	}
+	else if (*r == 178 && *g == 206 && *b == 231)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+	else if (*r == 196 && *g == 221 && *b == 242)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+	else if (*r == 27 && *g == 96 && *b == 160)
+	{
+		*r = GetRValue(accent);
+		*g = GetGValue(accent);
+		*b = GetBValue(accent);
+	}
+	else if (*r == 65 && *g == 119 && *b == 173)
+	{
+		*r = GetRValue(accentLight1);
+		*g = GetGValue(accentLight1);
+		*b = GetBValue(accentLight1);
+	}
+	else if (*r == 140 && *g == 174 && *b == 209)
+	{
+		*r = GetRValue(accentLight2);
+		*g = GetGValue(accentLight2);
+		*b = GetBValue(accentLight2);
+	}
+	else if (*r == 51 && *g == 109 && *b == 167)
+	{
+		*r = GetRValue(accent);
+		*g = GetGValue(accent);
+		*b = GetBValue(accent);
+	}
+	else if (*r == 146 && *g == 179 && *b == 213)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+	else if (*r == 233 && *g == 240 && *b == 250)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+	else if (*r == 176 && *g == 205 && *b == 230)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+	else if (*r == 186 && *g == 213 && *b == 236)
+	{
+		*r = GetRValue(accentLight3);
+		*g = GetGValue(accentLight3);
+		*b = GetBValue(accentLight3);
+	}
+}
 #pragma endregion
 
 int RecolorizeBitmap(HBITMAP hbm, BitmapHandler handler)
@@ -191,11 +373,11 @@ int ModifyStyle(LPCWSTR pszClassList, int iPartId, int iStateId, int iPropId, Bi
 
 void ModifyStyles()
 {
-    int i;
+	int i;
 	ModifyStyle(VSCLASS_BUTTON, BP_PUSHBUTTON, 0, TMT_DIBDATA, Accent_Button);
+	ModifyStyle(VSCLASS_BUTTON, BP_CHECKBOX, 0, 3, Accent_CheckBox);
 	/*
 	ModifyStyle(VSCLASS_BUTTON, BP_RADIOBUTTON, 0, 3);
-	ModifyStyle(VSCLASS_BUTTON, BP_CHECKBOX, 0, 3);
     for (i = CP_DROPDOWNBUTTON; i <= CP_DROPDOWNBUTTONLEFT; i++)
     {
         ModifyStyle(VSCLASS_COMBOBOX, i, 0, TMT_DIBDATA);
