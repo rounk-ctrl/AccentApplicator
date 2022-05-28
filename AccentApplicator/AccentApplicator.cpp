@@ -45,229 +45,176 @@ void AccentColorize(BYTE* pPixel, COLORREF color)
 	pPixel[0] = GetBValue(color);
 }
 
+typedef struct {
+	int r;
+	int g;
+	int b;
+} rgb;
+
 #pragma region Colorize
+
+void SetValues(int** r, int** g, int** b, int** a, COLORREF color)
+{
+	**r = GetRValue(color);
+	**g = GetGValue(color);
+	**b = GetBValue(color);
+}
 
 void Accent_Button(int* r, int* g, int* b, int* a)
 {
 	// PBS_HOT, PBS_DEFAULTED, PBS_DEFAULTED_ANIMATING outline
 	if (*r == 0 && *g == 120 && *b == 215)
 	{
-		*r = GetRValue(accent);
-		*g = GetGValue(accent);
-		*b = GetBValue(accent);
+		SetValues(&r, &g, &b, 0, accent);
 	}
 	// PBS_HOT
 	else if (*r == 206 && *g == 229 && *b == 247)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 	// single pixel in top left of PBS_HOT
 	else if (*r == 229 && *g == 241 && *b == 251)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 	// PBS_PRESSED outline
 	else if (*r == 0 && *g == 84 && *b == 153)
 	{
-		*r = GetRValue(accentDark1);
-		*g = GetGValue(accentDark1);
-		*b = GetBValue(accentDark1);
+		SetValues(&r, &g, &b, 0, accentDark1);
 	}
 	// PBS_PRESSED
 	else if (*r == 204 && *g == 228 && *b == 247)
 	{
-		*r = GetRValue(accentLight2);
-		*g = GetGValue(accentLight2);
-		*b = GetBValue(accentLight2);
+		SetValues(&r, &g, &b, 0, accentLight2);
 	}
 }
+
 void Accent_CheckBox(int* r, int* g, int* b, int* a)
 {
 	// outline and some pixels on hot checkbox states
 	if (*r == 0 && *g == 120 && *b == 215)
 	{
-		*r = GetRValue(accent);
-		*g = GetGValue(accent);
-		*b = GetBValue(accent);
+		SetValues(&r, &g, &b, 0, accent);
 	}
 	// outline and some pixels on pressed checkbox states
 	else if (*r == 0 && *g == 84 && *b == 153)
 	{
-		*r = GetRValue(accentDark1);
-		*g = GetGValue(accentDark1);
-		*b = GetBValue(accentDark1);
+		SetValues(&r, &g, &b, 0, accentDark1);
 	}
 	// some pixels on hot checkbox states
 	else if (*r == 35 && *g == 130 && *b == 217)
 	{
-		*r = GetRValue(accent);
-		*g = GetGValue(accent);
-		*b = GetBValue(accent);
+		SetValues(&r, &g, &b, 0, accent);
 	}
 	// some pixels on hot checkbox states
 	else if (*r == 83 && *g == 150 && *b == 223)
 	{
-		*r = GetRValue(accentLight1);
-		*g = GetGValue(accentLight1);
-		*b = GetBValue(accentLight1);
+		SetValues(&r, &g, &b, 0, accentLight1);
 	}
 	// some pixels on hot checkbox states
 	else if (*r == 134 && *g == 178 && *b == 230)
 	{
-		*r = GetRValue(accentLight2);
-		*g = GetGValue(accentLight2);
-		*b = GetBValue(accentLight2);
+		SetValues(&r, &g, &b, 0, accentLight2);
 	}
 	else if (*r == 119 && *g == 169 && *b == 228)
 	{
-		*r = GetRValue(accentLight2);
-		*g = GetGValue(accentLight2);
-		*b = GetBValue(accentLight2);
+		SetValues(&r, &g, &b, 0, accentLight2);
 	}
 	else if (*r == 188 && *g == 211 && *b == 240)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 	else if (*r == 36 && *g == 131 && *b == 218)
 	{
-		*r = GetRValue(accent);
-		*g = GetGValue(accent);
-		*b = GetBValue(accent);
+		SetValues(&r, &g, &b, 0, accent);
 	}
 	else if (*r == 84 && *g == 151 && *b == 223)
 	{
-		*r = GetRValue(accentLight1);
-		*g = GetGValue(accentLight1);
-		*b = GetBValue(accentLight1);
+		SetValues(&r, &g, &b, 0, accentLight1);
 	}
 	else if (*r == 176 && *g == 203 && *b == 238)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 	else if (*r == 66 && *g == 142 && *b == 221)
 	{
-		*r = GetRValue(accentLight1);
-		*g = GetGValue(accentLight1);
-		*b = GetBValue(accentLight1);
+		SetValues(&r, &g, &b, 0, accentLight1);
 	}
 	else if (*r == 51 && *g == 147 && *b == 223)
 	{
-		*r = GetRValue(accentLight1);
-		*g = GetGValue(accentLight1);
-		*b = GetBValue(accentLight1);
+		SetValues(&r, &g, &b, 0, accentLight1);
 	}
 	else if (*r == 184 && *g == 208 && *b == 240)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 	// pressed background
 	else if (*r == 204 && *g == 228 && *b == 247)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 	else if (*r == 64 && *g == 118 && *b == 173)
 	{
-		*r = GetRValue(accentLight1);
-		*g = GetGValue(accentLight1);
-		*b = GetBValue(accentLight1);
+		SetValues(&r, &g, &b, 0, accentLight1);
 	}
 	else if (*r == 25 && *g == 96 && *b == 159)
 	{
-		*r = GetRValue(accent);
-		*g = GetGValue(accent);
-		*b = GetBValue(accent);
+		SetValues(&r, &g, &b, 0, accent);
 	}
 	else if (*r == 106 && *g == 148 && *b == 191)
 	{
-		*r = GetRValue(accentLight2);
-		*g = GetGValue(accentLight2);
-		*b = GetBValue(accentLight2);
+		SetValues(&r, &g, &b, 0, accentLight2);
 	}
 	else if (*r == 150 && *g == 182 && *b == 215)
 	{
-		*r = GetRValue(accentLight2);
-		*g = GetGValue(accentLight2);
-		*b = GetBValue(accentLight2);
+		SetValues(&r, &g, &b, 0, accentLight2);
 	}
 	else if (*r == 93 && *g == 138 && *b == 185)
 	{
-		*r = GetRValue(accentLight1);
-		*g = GetGValue(accentLight1);
-		*b = GetBValue(accentLight1);
+		SetValues(&r, &g, &b, 0, accentLight1);
 	}
 	else if (*r == 178 && *g == 206 && *b == 231)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 	else if (*r == 196 && *g == 221 && *b == 242)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 	else if (*r == 27 && *g == 96 && *b == 160)
 	{
-		*r = GetRValue(accent);
-		*g = GetGValue(accent);
-		*b = GetBValue(accent);
+		SetValues(&r, &g, &b, 0, accent);
 	}
 	else if (*r == 65 && *g == 119 && *b == 173)
 	{
-		*r = GetRValue(accentLight1);
-		*g = GetGValue(accentLight1);
-		*b = GetBValue(accentLight1);
+		SetValues(&r, &g, &b, 0, accentLight1);
 	}
 	else if (*r == 140 && *g == 174 && *b == 209)
 	{
-		*r = GetRValue(accentLight2);
-		*g = GetGValue(accentLight2);
-		*b = GetBValue(accentLight2);
+		SetValues(&r, &g, &b, 0, accentLight2);
 	}
 	else if (*r == 51 && *g == 109 && *b == 167)
 	{
-		*r = GetRValue(accent);
-		*g = GetGValue(accent);
-		*b = GetBValue(accent);
+		SetValues(&r, &g, &b, 0, accent);
 	}
 	else if (*r == 146 && *g == 179 && *b == 213)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 	else if (*r == 233 && *g == 240 && *b == 250)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 	else if (*r == 176 && *g == 205 && *b == 230)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 	else if (*r == 186 && *g == 213 && *b == 236)
 	{
-		*r = GetRValue(accentLight3);
-		*g = GetGValue(accentLight3);
-		*b = GetBValue(accentLight3);
+		SetValues(&r, &g, &b, 0, accentLight3);
 	}
 }
+
 #pragma endregion
 
 int RecolorizeBitmap(HBITMAP hbm, BitmapHandler handler)
@@ -294,7 +241,15 @@ int RecolorizeBitmap(HBITMAP hbm, BitmapHandler handler)
             int b = PixB(pPixel); // [0]
             int a = PixA(pPixel); // [3]
 
-			// accent auto
+			handler(&r, &g, &b, &a);
+
+			pPixel[2] = r;
+			pPixel[1] = g;
+			pPixel[0] = b;
+			pPixel[3] = a;
+
+			#pragma region AccentAuto
+
 			if (r == GetRValue(oldAccent) && 
 				g == GetGValue(oldAccent) && 
 				b == GetBValue(oldAccent))
@@ -344,12 +299,7 @@ int RecolorizeBitmap(HBITMAP hbm, BitmapHandler handler)
 				AccentColorize(pPixel, accentDark3);
 			}
 
-			handler(&r, &g, &b, &a);
-
-			pPixel[2] = r;
-			pPixel[1] = g;
-			pPixel[0] = b;
-			pPixel[3] = a;
+			#pragma endregion
 
             //pPixel[3] = 1;
             pPixel += 4;
