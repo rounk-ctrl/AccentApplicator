@@ -40,8 +40,6 @@ inline int PixA(BYTE* pPixel)
 
 #pragma endregion
 
-#pragma region Colorize
-
 // PURPOSE: Changes pixels of a BYTE to specified COLORREF.
 // 
 // pPixel - the pointer to the BYTE* which has the bitmap.
@@ -53,8 +51,6 @@ void AccentColorize(BYTE* pPixel, COLORREF color)
 	pPixel[1] = GetGValue(color);
 	pPixel[0] = GetBValue(color);
 }
-
-#pragma endregion
 
 int RecolorizeBitmap(HBITMAP hbm, BitmapHandler handler)
 {
