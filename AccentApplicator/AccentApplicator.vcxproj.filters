@@ -30,12 +30,18 @@
     <ClInclude Include="AccentColorHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AccentControls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccentApplicator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AccentColorHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AccentControls.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

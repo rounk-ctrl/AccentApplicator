@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClInclude Include="AccentColorHelper.h" />
     <ClInclude Include="AccentApplicator.h" />
+    <ClInclude Include="AccentControls.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -149,6 +150,7 @@
   <ItemGroup>
     <ClCompile Include="AccentColorHelper.cpp" />
     <ClCompile Include="AccentApplicator.cpp" />
+    <ClCompile Include="AccentControls.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AccentApplicator.rc" />
