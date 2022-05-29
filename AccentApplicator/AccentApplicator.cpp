@@ -7,6 +7,12 @@
 
 typedef void(*BitmapHandler)(int* r, int* g, int* b, int* a);
 
+typedef struct {
+	int r;
+	int g;
+	int b;
+} rgb;
+
 #pragma region Pixel Color
 
 inline int PixClr(int val)
@@ -33,6 +39,8 @@ inline int PixA(BYTE* pPixel)
 
 #pragma endregion
 
+#pragma region Colorize
+
 // PURPOSE: Changes pixels of a BYTE to specified COLORREF.
 // 
 // pPixel - the pointer to the BYTE* which has the bitmap.
@@ -44,14 +52,6 @@ void AccentColorize(BYTE* pPixel, COLORREF color)
 	pPixel[1] = GetGValue(color);
 	pPixel[0] = GetBValue(color);
 }
-
-typedef struct {
-	int r;
-	int g;
-	int b;
-} rgb;
-
-#pragma region Colorize
 
 void SetValues(int** r, int** g, int** b, int** a, COLORREF color)
 {
@@ -215,6 +215,77 @@ void Accent_CheckBox(int* r, int* g, int* b, int* a)
 	}
 }
 
+void Accent_Tab(int* r, int* g, int* b, int* a)
+{
+	if (*r == 216 && *g == 234 && *b == 249)
+	{
+		SetValues(&r, &g, &b, 0, accentLight3);
+	}
+	else if (*r == 0 && *g == 120 && *b == 215)
+	{
+		SetValues(&r, &g, &b, 0, accent);
+	}
+}
+
+void Accent_Trackbar(int* r, int* g, int* b, int* a)
+{
+	if (*r == 0 && *g == 120 && *b == 215)
+	{
+		SetValues(&r, &g, &b, 0, accent);
+	}
+	else if (*r == 0 && *g == 122 && *b == 217)
+	{
+		SetValues(&r, &g, &b, 0, accent);
+	}
+	else if ((*r == 0 && *g == 60 && *b == 107) || (*r == 0 && *g == 60 && *b == 108))
+	{
+		SetValues(&r, &g, &b, 0, accentDark2);
+	}
+}
+
+// spin is the worst
+void Accent_Spin(int* r, int* g, int* b, int* a)
+{
+	if (*r == 86 && *g == 157 && *b == 229)
+	{
+		SetValues(&r, &g, &b, 0, accentLight1);
+	}
+	else if (
+		(*r == 225 && *g == 239 && *b == 252) ||
+		(*r == 227 && *g == 240 && *b == 252) ||
+		(*r == 228 && *g == 241 && *b == 252) ||
+		(*r == 230 && *g == 241 && *b == 252) ||
+		(*r == 231 && *g == 242 && *b == 252) ||
+		(*r == 232 && *g == 242 && *b == 252) ||
+		(*r == 234 && *g == 243 && *b == 252) ||
+		(*r == 235 && *g == 244 && *b == 252) ||
+		(*r == 224 && *g == 238 && *b == 252) ||
+		(*r == 223 && *g == 238 && *b == 252) ||
+		(*r == 222 && *g == 237 && *b == 252) ||
+		(*r == 221 && *g == 237 && *b == 252))
+	{
+		SetValues(&r, &g, &b, 0, accentLight3);
+	}
+	else if (
+		(*r == 126 && *g == 180 && *b == 234) ||
+		(*r == 218 && *g == 235 && *b == 252) ||
+		(*r == 217 && *g == 235 && *b == 252) ||
+		(*r == 215 && *g == 234 && *b == 252) ||
+		(*r == 214 && *g == 233 && *b == 252) ||
+		(*r == 212 && *g == 232 && *b == 252) ||
+		(*r == 210 && *g == 231 && *b == 252) ||
+		(*r == 208 && *g == 230 && *b == 252) ||
+		(*r == 206 && *g == 229 && *b == 252) ||
+		(*r == 204 && *g == 228 && *b == 252) ||
+		(*r == 202 && *g == 227 && *b == 252) ||
+		(*r == 200 && *g == 226 && *b == 252) ||
+		(*r == 198 && *g == 225 && *b == 252) ||
+		(*r == 197 && *g == 225 && *b == 252))
+	{
+		SetValues(&r, &g, &b, 0, accentLight2);
+	}
+}
+
 #pragma endregion
 
 int RecolorizeBitmap(HBITMAP hbm, BitmapHandler handler)
@@ -326,37 +397,37 @@ void ModifyStyles()
 	int i;
 	ModifyStyle(VSCLASS_BUTTON, BP_PUSHBUTTON, 0, TMT_DIBDATA, Accent_Button);
 	ModifyStyle(VSCLASS_BUTTON, BP_CHECKBOX, 0, 3, Accent_CheckBox);
+	for (i = CP_DROPDOWNBUTTON; i <= CP_DROPDOWNBUTTONLEFT; i++)
+	{
+		ModifyStyle(VSCLASS_COMBOBOX, i, 0, TMT_DIBDATA, Accent_Button);
+	}
+	for (i = EP_EDITBORDER_NOSCROLL; i <= EP_EDITBORDER_HVSCROLL; i++)
+	{
+		ModifyStyle(VSCLASS_EDIT, i, 0, TMT_DIBDATA, Accent_Button);
+	}
+	for (i = TABP_TABITEM; i <= TABP_TOPTABITEMBOTHEDGE; i++)
+	{
+		ModifyStyle(VSCLASS_TAB, i, 0, TMT_DIBDATA, Accent_Tab);
+	}
+	for (i = TKP_THUMB; i <= TKP_THUMBRIGHT; i++)
+	{
+		ModifyStyle(VSCLASS_TRACKBAR, i, 0, 2, Accent_Trackbar);
+		ModifyStyle(VSCLASS_TRACKBAR, i, 0, 3, Accent_Trackbar);
+	}
+	for (i = LBCP_BORDER_HSCROLL; i <= LBCP_ITEM; i++)
+	{
+		ModifyStyle(VSCLASS_LISTBOX, i, 0, TMT_DIBDATA, Accent_Button);
+	}
+	for (i = SPNP_UP; i <= SPNP_DOWNHORZ; i++)
+	{
+		ModifyStyle(VSCLASS_SPIN, i, 0, TMT_DIBDATA, Accent_Spin);
+	}
 	/*
 	ModifyStyle(VSCLASS_BUTTON, BP_RADIOBUTTON, 0, 3);
-    for (i = CP_DROPDOWNBUTTON; i <= CP_DROPDOWNBUTTONLEFT; i++)
-    {
-        ModifyStyle(VSCLASS_COMBOBOX, i, 0, TMT_DIBDATA);
-    }
-    for (i = EP_EDITBORDER_NOSCROLL; i <= EP_EDITBORDER_HVSCROLL; i++)
-    {
-        ModifyStyle(VSCLASS_EDIT, i, 0, TMT_DIBDATA);
-    }
-    for (i = TABP_TABITEM; i <= TABP_AEROWIZARDBODY; i++)
-    {
-        ModifyStyle(VSCLASS_TAB, i, 0, TMT_DIBDATA);
-    }
-    for (i = TKP_THUMB; i <= TKP_THUMBRIGHT; i++)
-    {
-		ModifyStyle(VSCLASS_TRACKBAR, i, 0, TMT_DIBDATA);
-		ModifyStyle(VSCLASS_TRACKBAR, i, 0, 3);
-    }
     ModifyStyle(VSCLASS_HEADERSTYLE, HP_HEADERITEM, 0, 2);
-    for (i = LBCP_BORDER_HSCROLL; i <= LBCP_ITEM; i++)
-    {
-        ModifyStyle(VSCLASS_LISTBOX, i, 0, TMT_DIBDATA);
-    }
     for (i = TP_BUTTON; i <= TP_SPLITBUTTONDROPDOWN; i++)
     {
         ModifyStyle(VSCLASS_TOOLBAR, i, 0, TMT_DIBDATA);
-    }
-    for (i = SPNP_UP; i <= SPNP_DOWNHORZ; i++)
-    {
-        ModifyStyle(VSCLASS_SPIN, i, 0, TMT_DIBDATA);
     }
     ModifyStyle(L"BreadcrumbBar", 1, 0, TMT_DIBDATA);
     for (i = 2; i <= 6; i++)
