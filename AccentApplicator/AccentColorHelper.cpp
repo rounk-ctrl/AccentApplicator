@@ -12,6 +12,7 @@ PGetImmersiveColorTypeFromName pGetImmersiveColorTypeFromName = NULL;
 PGetImmersiveUserColorSetPreference pGetImmersiveUserColorSetPreference = NULL;
 
 COLORREF accent;
+
 COLORREF accentLight1;
 COLORREF accentLight2;
 COLORREF accentLight3;
@@ -19,16 +20,6 @@ COLORREF accentLight3;
 COLORREF accentDark1;
 COLORREF accentDark2;
 COLORREF accentDark3;
-
-
-COLORREF oldAccent;
-COLORREF oldAccentLight1;
-COLORREF oldAccentLight2;
-COLORREF oldAccentLight3;
-
-COLORREF oldAccentDark1;
-COLORREF oldAccentDark2;
-COLORREF oldAccentDark3;
 
 DWORD GetImmersiveColorRGB(const WCHAR* name)
 {
@@ -53,16 +44,4 @@ void UpdateAccentColors()
 		accentDark2 = GetImmersiveColorRGB(L"ImmersiveSystemAccentDark2");
 		accentDark3 = GetImmersiveColorRGB(L"ImmersiveSystemAccentDark3");
 	}
-}
-
-void SaveCurrentAccentColors()
-{
-	oldAccent = GetImmersiveColorRGB(L"ImmersiveSystemAccent");
-	oldAccentLight1 = GetImmersiveColorRGB(L"ImmersiveSystemAccentLight1");
-	oldAccentLight2 = GetImmersiveColorRGB(L"ImmersiveSystemAccentLight2");
-	oldAccentLight3 = GetImmersiveColorRGB(L"ImmersiveSystemAccentLight3");
-
-	oldAccentDark1 = GetImmersiveColorRGB(L"ImmersiveSystemAccentDark1");
-	oldAccentDark2 = GetImmersiveColorRGB(L"ImmersiveSystemAccentDark2");
-	oldAccentDark3 = GetImmersiveColorRGB(L"ImmersiveSystemAccentDark3");
 }
