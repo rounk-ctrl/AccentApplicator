@@ -49,8 +49,11 @@ void ModifyStyles() {
     }
     for (i = TKP_THUMB; i <= TKP_THUMBRIGHT; i++)
     {
-        ModifyStyle(VSCLASS_TRACKBAR, i, 0, 2);
-        ModifyStyle(VSCLASS_TRACKBAR, i, 0, 3);
+        for (int j = 1; j <= 7; j++)
+        {
+            ModifyStyle(VSCLASS_TRACKBAR, i, 0, j);
+            ModifyStyle(VSCLASS_TRACKBAR, i, 0, j);
+        }
     }
     for (i = LBCP_BORDER_HSCROLL; i <= LBCP_ITEM; i++)
     {
