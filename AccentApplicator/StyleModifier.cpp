@@ -31,10 +31,19 @@ int ModifyStyle(LPCWSTR pszClassList, int iPartId, int iStateId, int iPropId)
 }
 
 void ModifyStyles() {
-    int i;
+    int i, j;
 
     ModifyStyle(VSCLASS_BUTTON, BP_PUSHBUTTON, 0, TMT_DIBDATA);
-    ModifyStyle(VSCLASS_BUTTON, BP_CHECKBOX, 0, 3);
+    for (j = 1; j <= 7; j++) {
+        ModifyStyle(VSCLASS_BUTTON, BP_CHECKBOX, 0, j);
+    }
+    for (j = 1; j <= 7; j++) {
+        ModifyStyle(VSCLASS_BUTTON, BP_RADIOBUTTON, 0, j);
+    }
+    for (j = 1; j <= 3; j++) {
+        ModifyStyle(VSCLASS_BUTTON, BP_GROUPBOX, 0, j);
+    }
+
     for (i = CP_DROPDOWNBUTTON; i <= CP_DROPDOWNBUTTONLEFT; i++)
     {
         ModifyStyle(VSCLASS_COMBOBOX, i, 0, TMT_DIBDATA);
@@ -49,7 +58,7 @@ void ModifyStyles() {
     }
     for (i = TKP_THUMB; i <= TKP_THUMBRIGHT; i++)
     {
-        for (int j = 1; j <= 7; j++)
+        for (j = 1; j <= 7; j++)
         {
             ModifyStyle(VSCLASS_TRACKBAR, i, 0, j);
             ModifyStyle(VSCLASS_TRACKBAR, i, 0, j);
