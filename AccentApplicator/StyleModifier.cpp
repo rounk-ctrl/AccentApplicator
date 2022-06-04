@@ -96,4 +96,6 @@ void ModifyStyles() {
     {
         ModifyStyle(L"BB::Toolbar", i, 0, TMT_DIBDATA); // Explorer Breadcrumbs Highlight color
     }
+
+    ModifyStyle(L"DragDrop", 7, 0, TMT_DIBDATA);
 }
