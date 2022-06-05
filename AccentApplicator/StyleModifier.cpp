@@ -19,7 +19,7 @@ void StandardBitmapHandler(int* r, int* g, int* b, int* a) {
     *b = rgbNew.b;
 }
 
-int ModifyStyle(LPCWSTR pszClassList, int iPartId, int iStateId, int iPropId)
+bool ModifyStyle(LPCWSTR pszClassList, int iPartId, int iStateId, int iPropId)
 {
     HBITMAP hBitmap;
 
@@ -72,11 +72,10 @@ void ModifyStyles() {
     {
         ModifyStyle(VSCLASS_SPIN, i, 0, TMT_DIBDATA);
     }
-    ModifyStyle(VSCLASS_BUTTON, BP_RADIOBUTTON, 0, 3);
-    ModifyStyle(VSCLASS_HEADERSTYLE, HP_HEADERITEM, 0, 2);
+    ModifyStyle(VSCLASS_HEADERSTYLE, HP_HEADERITEM, 0, TMT_DIBDATA);
     for (i = TP_BUTTON; i <= TP_SPLITBUTTONDROPDOWN; i++)
     {
-        ModifyStyle(VSCLASS_TOOLBAR, i, 0, TMT_DIBDATA);
+        ModifyStyle(L"Toolbar", i, 1, TMT_DIBDATA);
     }
     ModifyStyle(L"BreadcrumbBar", 1, 0, TMT_DIBDATA);
     for (i = 2; i <= 6; i++)
@@ -89,13 +88,13 @@ void ModifyStyles() {
     }
     ModifyStyle(L"PreviewPane", 1, 1, TMT_DIBDATA); // Windows Vista/7 Explorer Bottom Details Panel
 
-    ModifyStyle(L"CommandModule", 1, 0, TMT_DIBDATA); // Windows 7 Explorer Command Bar
-    for (i = 3; i <= 5; i++)
+    ModifyStyle(L"CommandModule", 1, 0, TMT_DIBDATA);
+    for (i = 1; i <= 10; i++)
     {
         ModifyStyle(L"CommandModule", i, 0, TMT_DIBDATA);
     }
     ModifyStyle(L"ItemsView::Header", 1, 0, TMT_DIBDATA); // Explorer File Groups Header
-    for (i = 1; i <= 2; i++)
+    for (i = 1; i <= 7; i++)
     {
         ModifyStyle(L"ItemsView", 3, i, TMT_DIBDATA);
     }
@@ -110,4 +109,39 @@ void ModifyStyles() {
     }
 
     ModifyStyle(L"DragDrop", 7, 0, TMT_DIBDATA);
+    ModifyStyle(L"Header", 1, 0, TMT_DIBDATA);
+
+    for (i = 1; i <= 3; i++)
+    {
+        for (j = 1; j <= 7; j++)
+        {
+            ModifyStyle(L"Navigation", i, 0, j);
+        }
+    }
+
+    for (j = 1; j <= 7; j++)
+    {
+        ModifyStyle(L"PAUSE", 1, 0, j);
+    }
+
+    for (i = 1; i <= 8; i++)
+    {
+        ModifyStyle(L"Tab", i, 0, TMT_DIBDATA);
+    }
+
+    for (i = 1; i <= 2; i++)
+    {
+        ModifyStyle(L"DatePicker", i, 0, 1);
+    }
+
+    for (j = 0; j <= 6; j++)
+    {
+        ModifyStyle(L"Desktop::ListView", 1, j, j); // Desktop icons
+    }
+
+    ModifyStyle(L"Rebar", 6, 0, 2);
+    for (i = 4; i <= 6; i++) {
+        ModifyStyle(L"Rebar", i, 1, 2);
+        ModifyStyle(L"Rebar", i, 1, 2);
+    }
 }
