@@ -76,6 +76,10 @@ void ModifyStyles() {
     for (i = TP_BUTTON; i <= TP_SPLITBUTTONDROPDOWN; i++)
     {
         ModifyStyle(L"Toolbar", i, 1, TMT_DIBDATA);
+        ModifyStyle(L"ExplorerMenu::Toolbar", i, 1, TMT_DIBDATA);
+        ModifyStyle(L"Alternate::Toolbar", i, 1, TMT_DIBDATA);
+        ModifyStyle(L"Communications::Toolbar", i, 1, TMT_DIBDATA);
+        ModifyStyle(L"InfoPaneToolbar::Toolbar", i, 1, TMT_DIBDATA);
     }
     ModifyStyle(L"BreadcrumbBar", 1, 0, TMT_DIBDATA);
     for (i = 2; i <= 6; i++)
@@ -109,6 +113,20 @@ void ModifyStyles() {
     }
 
     ModifyStyle(L"Go::Toolbar", 1, 1, TMT_DIBDATA);
+    ModifyStyle(L"InactiveGo::Toolbar", 1, 1, TMT_DIBDATA);
+
+    ModifyStyle(L"MaxGo::Toolbar", 1, 1, TMT_DIBDATA);
+
+    ModifyStyle(L"LVPopup::Toolbar", 1, 1, TMT_DIBDATA);
+    ModifyStyle(L"LVPopupBottom::Toolbar", 1, 1, TMT_DIBDATA);
+
+    ModifyStyle(L"InactiveBB::Toolbar", 3, 1, TMT_DIBDATA);
+    for (j = 1; j <= 6; j++) {
+        ModifyStyle(L"InactiveBB::Toolbar", 4, j, j);
+        ModifyStyle(L"InactiveBB::Toolbar", 4, j, TMT_DIBDATA);
+        ModifyStyle(L"InactiveBBComposited::Toolbar", 4, j, j);
+        ModifyStyle(L"InactiveBBComposited::Toolbar", 4, j, TMT_DIBDATA);
+    }
 
     ModifyStyle(L"DragDrop", 7, 0, TMT_DIBDATA);
     ModifyStyle(L"Header", 1, 0, TMT_DIBDATA);
@@ -128,7 +146,7 @@ void ModifyStyles() {
 
     for (i = 1; i <= 8; i++)
     {
-        ModifyStyle(L"Tab", i, 0, TMT_DIBDATA);
+        ModifyStyle(L"Tab", i, 1, TMT_DIBDATA);
     }
 
     for (i = 1; i <= 2; i++)
