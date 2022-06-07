@@ -154,9 +154,9 @@ void ModifyStyles() {
         ModifyStyle(L"DatePicker", i, 0, 1);
     }
 
-    for (j = 0; j <= 6; j++)
+    for (j = 0; j <= 9; j++)
     {
-        ModifyStyle(L"Desktop::ListView", 1, j, j); // Desktop icons
+        ModifyStyle(L"Desktop::ListView", 1, j, TMT_DIBDATA); // Desktop icons
     }
 
     ModifyStyle(L"Rebar", 6, 0, 2);
