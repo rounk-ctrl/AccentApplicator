@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{2570739d-76fe-414a-8446-d439d2d66679}</ProjectGuid>
     <RootNamespace>AccentApplicator</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>AccentApplicator</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -43,13 +43,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -146,23 +146,28 @@
   <ItemGroup>
     <ClInclude Include="AccentColorHelper.h" />
     <ClInclude Include="AccentApplicator.h" />
-    <ClInclude Include="AccentControls.h" />
+    <ClInclude Include="BitmapHelper.h" />
+    <ClInclude Include="ColorHelper.h" />
+    <ClInclude Include="StyleModifier.h" />
+    <ClInclude Include="SysColorsModifier.h" />
+    <ClInclude Include="TrayIcon.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccentColorHelper.cpp" />
     <ClCompile Include="AccentApplicator.cpp" />
-    <ClCompile Include="AccentControls.cpp" />
+    <ClCompile Include="BitmapHelper.cpp" />
+    <ClCompile Include="ColorHelper.cpp" />
+    <ClCompile Include="StyleModifier.cpp" />
+    <ClCompile Include="SysColorsModifier.cpp" />
+    <ClCompile Include="TrayIcon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AccentApplicator.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="AccentApplicator.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="registry.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
