@@ -1,5 +1,7 @@
 #pragma once
 #include "resource.h"
+#include "AccentColorHelper.h"
+#include "AccentControls.h"
 
 #define MAX_LOADSTRING 100
 #define WM_USER_SHELLICON WM_USER + 1

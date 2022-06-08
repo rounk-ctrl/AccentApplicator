@@ -13,6 +13,7 @@
 #include <shellapi.h>
 #include <iostream>
 #include <Uxtheme.h>
+#include <map>
 #include <vsstyle.h>
 #include <vssym32.h>
 

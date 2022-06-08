@@ -3,16 +3,28 @@
 
 #include "framework.h"
 #include "AccentApplicator.h"
-#include "AccentColorHelper.h"
-#include "AccentControls.h"
 
 typedef void(*BitmapHandler)(int* r, int* g, int* b, int* a);
 
-typedef struct {
-	int r;
-	int g;
-	int b;
-} rgb;
+struct color_wrapper 
+{
+	int r, g, b;
+	explicit color_wrapper(COLORREF color)
+	{
+		this->r = GetRValue(color);
+		this->g = GetGValue(color);
+		this->b = GetBValue(color);
+	}
+	explicit color_wrapper(int _r, int _g, int _b) :
+		r(_r), g(_g), b(_b) {}
+};
+
+/*
+std::map<color_wrapper, COLORREF> mappings = {
+	{color_wrapper(oldAccent),accent},
+	{color_wrapper(oldAccentLight1),accentLight1}
+};
+*/
 
 #pragma region Pixel Color
 
@@ -83,37 +95,40 @@ int RecolorizeBitmap(HBITMAP hbm, BitmapHandler handler)
 			pPixel[0] = b;
 			pPixel[3] = a;
 
-			#pragma region AccentAuto
+			// color_wrapper current(r, g, b);
+			// AccentColorize(pPixel, mappings[current]);
 
-			if (r == GetRValue(oldAccent) && 
-				g == GetGValue(oldAccent) && 
+			//for now
+			#pragma region Accent auto
+			if (r == GetRValue(oldAccent) &&
+				g == GetGValue(oldAccent) &&
 				b == GetBValue(oldAccent))
 			{
 				AccentColorize(pPixel, accent);
 			}
 			else if (
-				r == GetRValue(oldAccentLight1) && 
-				g == GetGValue(oldAccentLight1) && 
+				r == GetRValue(oldAccentLight1) &&
+				g == GetGValue(oldAccentLight1) &&
 				b == GetBValue(oldAccentLight1))
 			{
 				AccentColorize(pPixel, accentLight1);
 			}
 			else if (
-				r == GetRValue(oldAccentLight2) && 
-				g == GetGValue(oldAccentLight2) && 
+				r == GetRValue(oldAccentLight2) &&
+				g == GetGValue(oldAccentLight2) &&
 				b == GetBValue(oldAccentLight2))
 			{
 				AccentColorize(pPixel, accentLight2);
 			}
 			else if (
 				r == GetRValue(oldAccentLight3) &&
-				g == GetGValue(oldAccentLight3) && 
+				g == GetGValue(oldAccentLight3) &&
 				b == GetBValue(oldAccentLight3))
 			{
 				AccentColorize(pPixel, accentLight3);
 			}
 			else if (
-				r == GetRValue(oldAccentDark1) && 
+				r == GetRValue(oldAccentDark1) &&
 				g == GetGValue(oldAccentDark1) &&
 				b == GetBValue(oldAccentDark1))
 			{
@@ -133,8 +148,7 @@ int RecolorizeBitmap(HBITMAP hbm, BitmapHandler handler)
 			{
 				AccentColorize(pPixel, accentDark3);
 			}
-
-			#pragma endregion
+#pragma endregion
 
             //pPixel[3] = 1;
             pPixel += 4;
