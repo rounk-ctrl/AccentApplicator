@@ -2,6 +2,7 @@
 #include "framework.h"
 #include "resource.h"
 #include "AccentColorHelper.h"
-#include "AccentControls.h"
+#include "SysColorsModifier.h"
+#include "StyleModifier.h"
 
 void ApplyAccentColorization();
