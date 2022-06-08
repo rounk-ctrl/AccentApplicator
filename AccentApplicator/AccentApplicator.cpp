@@ -1,8 +1,4 @@
 #include "AccentApplicator.h"
-//#include "TrayIcon.h"
-#include "AccentColorHelper.h"
-#include "SysColorsModifier.h"
-#include "StyleModifier.h"
 
 HANDLE hHandle;
 
