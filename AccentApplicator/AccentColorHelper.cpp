@@ -28,7 +28,7 @@ DWORD GetImmersiveColorRGB(const WCHAR* name)
 
 void UpdateAccentColors()
 {
-	HMODULE hUxTheme = LoadLibrary(TEXT("uxtheme.dll"));
+	HMODULE hUxTheme = LoadLibraryEx(L"uxtheme.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
 	if (hUxTheme)
 	{
 		pGetImmersiveColorFromColorSetEx = (PGetImmersiveColorFromColorSetEx)GetProcAddress(hUxTheme, MAKEINTRESOURCEA(95));
